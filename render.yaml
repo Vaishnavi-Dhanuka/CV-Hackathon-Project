@@ -2,7 +2,7 @@ services:
   - type: web
     name: lumina-retinex-api
     runtime: python
-    plan: standard
+    plan: free
     buildCommand: git submodule update --init --recursive && python -m pip install -r requirements-render.txt
     startCommand: python scripts/fetch_render_checkpoint.py && uvicorn deep_learning.api:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /health
@@ -19,7 +19,7 @@ services:
   - type: web
     name: lumina-streamlit
     runtime: python
-    plan: standard
+    plan: free
     buildCommand: python -m pip install -r requirements-render-frontend.txt
     startCommand: python -m streamlit run app/main.py --server.address 0.0.0.0 --server.port $PORT --server.headless true --server.maxUploadSize 10
     healthCheckPath: /
