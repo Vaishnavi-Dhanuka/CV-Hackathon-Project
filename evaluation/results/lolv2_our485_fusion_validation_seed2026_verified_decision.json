@@ -1,0 +1,81 @@
+{
+  "validation_seed": 2026,
+  "validation_images": 97,
+  "selection_rule": "Require positive paired-bootstrap 95% CI lower bounds for PSNR, SSIM, and -LPIPS, plus mean NIQE and mean CIEDE2000 no worse than RetinexFormer. NIQE is descriptive, not a reference-fidelity measure.",
+  "selected_strategy": "Pretrained Retinexformer",
+  "recommended_production_method": "RetinexFormer",
+  "fusion_candidates": [
+    {
+      "method": "Weighted 50:50",
+      "paired_bootstrap_lower_95_ci": {
+        "psnr": -2.872856622619908,
+        "ssim": -0.20415598709254842,
+        "lpips": -0.14998302315409803
+      },
+      "mean_niqe_delta_vs_retinexformer": 2.137098845855261,
+      "mean_delta_e2000_delta_vs_retinexformer": 3.4402319180596734,
+      "reliably_improves": false,
+      "mean_fusion_latency_ms": 11.732739175170433
+    },
+    {
+      "method": "Adaptive fusion",
+      "paired_bootstrap_lower_95_ci": {
+        "psnr": -3.9606922237229543,
+        "ssim": -0.2755570409018389,
+        "lpips": -0.20971309638476557
+      },
+      "mean_niqe_delta_vs_retinexformer": 2.918036779259586,
+      "mean_delta_e2000_delta_vs_retinexformer": 4.8589550342756445,
+      "reliably_improves": false,
+      "mean_fusion_latency_ms": 18.154458762773615
+    },
+    {
+      "method": "Spatial-adaptive fusion",
+      "paired_bootstrap_lower_95_ci": {
+        "psnr": -4.440303318040541,
+        "ssim": -0.3034027942613957,
+        "lpips": -0.2331758378534434
+      },
+      "mean_niqe_delta_vs_retinexformer": 3.256803331205326,
+      "mean_delta_e2000_delta_vs_retinexformer": 5.461393110530892,
+      "reliably_improves": false,
+      "mean_fusion_latency_ms": 49.93340721649503
+    },
+    {
+      "method": "DL-dominant 90:10",
+      "paired_bootstrap_lower_95_ci": {
+        "psnr": -0.4196109192266104,
+        "ssim": -0.020531601096756075,
+        "lpips": -0.013864015716790539
+      },
+      "mean_niqe_delta_vs_retinexformer": 0.00908584717909665,
+      "mean_delta_e2000_delta_vs_retinexformer": 0.3463667889231259,
+      "reliably_improves": false,
+      "mean_fusion_latency_ms": 12.506528865901835
+    },
+    {
+      "method": "DL-dominant 95:5",
+      "paired_bootstrap_lower_95_ci": {
+        "psnr": -0.18663022102870297,
+        "ssim": -0.006683147214530276,
+        "lpips": -0.004403911424397501
+      },
+      "mean_niqe_delta_vs_retinexformer": -0.04283042979657859,
+      "mean_delta_e2000_delta_vs_retinexformer": 0.11870778713029684,
+      "reliably_improves": false,
+      "mean_fusion_latency_ms": 12.56532371135296
+    },
+    {
+      "method": "DL-dominant 80:20",
+      "paired_bootstrap_lower_95_ci": {
+        "psnr": -0.9713490198728747,
+        "ssim": -0.06239834584216742,
+        "lpips": -0.043003221294007354
+      },
+      "mean_niqe_delta_vs_retinexformer": 0.45446689327178336,
+      "mean_delta_e2000_delta_vs_retinexformer": 0.990648451539659,
+      "reliably_improves": false,
+      "mean_fusion_latency_ms": 13.04056391758816
+    }
+  ]
+}

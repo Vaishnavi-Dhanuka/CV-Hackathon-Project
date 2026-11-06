@@ -1,0 +1,776 @@
+109.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+109.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+109.png [Weighted 50:50] output is unavailable.
+109.png [Adaptive fusion] output is unavailable.
+109.png [Spatial-adaptive fusion] output is unavailable.
+109.png [DL-dominant 90:10] output is unavailable.
+109.png [DL-dominant 95:5] output is unavailable.
+109.png [DL-dominant 80:20] output is unavailable.
+110.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+110.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+110.png [Weighted 50:50] output is unavailable.
+110.png [Adaptive fusion] output is unavailable.
+110.png [Spatial-adaptive fusion] output is unavailable.
+110.png [DL-dominant 90:10] output is unavailable.
+110.png [DL-dominant 95:5] output is unavailable.
+110.png [DL-dominant 80:20] output is unavailable.
+119.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+119.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+119.png [Weighted 50:50] output is unavailable.
+119.png [Adaptive fusion] output is unavailable.
+119.png [Spatial-adaptive fusion] output is unavailable.
+119.png [DL-dominant 90:10] output is unavailable.
+119.png [DL-dominant 95:5] output is unavailable.
+119.png [DL-dominant 80:20] output is unavailable.
+12.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+12.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+12.png [Weighted 50:50] output is unavailable.
+12.png [Adaptive fusion] output is unavailable.
+12.png [Spatial-adaptive fusion] output is unavailable.
+12.png [DL-dominant 90:10] output is unavailable.
+12.png [DL-dominant 95:5] output is unavailable.
+12.png [DL-dominant 80:20] output is unavailable.
+121.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+121.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+121.png [Weighted 50:50] output is unavailable.
+121.png [Adaptive fusion] output is unavailable.
+121.png [Spatial-adaptive fusion] output is unavailable.
+121.png [DL-dominant 90:10] output is unavailable.
+121.png [DL-dominant 95:5] output is unavailable.
+121.png [DL-dominant 80:20] output is unavailable.
+129.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+129.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+129.png [Weighted 50:50] output is unavailable.
+129.png [Adaptive fusion] output is unavailable.
+129.png [Spatial-adaptive fusion] output is unavailable.
+129.png [DL-dominant 90:10] output is unavailable.
+129.png [DL-dominant 95:5] output is unavailable.
+129.png [DL-dominant 80:20] output is unavailable.
+130.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+130.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+130.png [Weighted 50:50] output is unavailable.
+130.png [Adaptive fusion] output is unavailable.
+130.png [Spatial-adaptive fusion] output is unavailable.
+130.png [DL-dominant 90:10] output is unavailable.
+130.png [DL-dominant 95:5] output is unavailable.
+130.png [DL-dominant 80:20] output is unavailable.
+135.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+135.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+135.png [Weighted 50:50] output is unavailable.
+135.png [Adaptive fusion] output is unavailable.
+135.png [Spatial-adaptive fusion] output is unavailable.
+135.png [DL-dominant 90:10] output is unavailable.
+135.png [DL-dominant 95:5] output is unavailable.
+135.png [DL-dominant 80:20] output is unavailable.
+137.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+137.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+137.png [Weighted 50:50] output is unavailable.
+137.png [Adaptive fusion] output is unavailable.
+137.png [Spatial-adaptive fusion] output is unavailable.
+137.png [DL-dominant 90:10] output is unavailable.
+137.png [DL-dominant 95:5] output is unavailable.
+137.png [DL-dominant 80:20] output is unavailable.
+139.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+139.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+139.png [Weighted 50:50] output is unavailable.
+139.png [Adaptive fusion] output is unavailable.
+139.png [Spatial-adaptive fusion] output is unavailable.
+139.png [DL-dominant 90:10] output is unavailable.
+139.png [DL-dominant 95:5] output is unavailable.
+139.png [DL-dominant 80:20] output is unavailable.
+157.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+157.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+157.png [Weighted 50:50] output is unavailable.
+157.png [Adaptive fusion] output is unavailable.
+157.png [Spatial-adaptive fusion] output is unavailable.
+157.png [DL-dominant 90:10] output is unavailable.
+157.png [DL-dominant 95:5] output is unavailable.
+157.png [DL-dominant 80:20] output is unavailable.
+162.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+162.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+162.png [Weighted 50:50] output is unavailable.
+162.png [Adaptive fusion] output is unavailable.
+162.png [Spatial-adaptive fusion] output is unavailable.
+162.png [DL-dominant 90:10] output is unavailable.
+162.png [DL-dominant 95:5] output is unavailable.
+162.png [DL-dominant 80:20] output is unavailable.
+173.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+173.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+173.png [Weighted 50:50] output is unavailable.
+173.png [Adaptive fusion] output is unavailable.
+173.png [Spatial-adaptive fusion] output is unavailable.
+173.png [DL-dominant 90:10] output is unavailable.
+173.png [DL-dominant 95:5] output is unavailable.
+173.png [DL-dominant 80:20] output is unavailable.
+199.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+199.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+199.png [Weighted 50:50] output is unavailable.
+199.png [Adaptive fusion] output is unavailable.
+199.png [Spatial-adaptive fusion] output is unavailable.
+199.png [DL-dominant 90:10] output is unavailable.
+199.png [DL-dominant 95:5] output is unavailable.
+199.png [DL-dominant 80:20] output is unavailable.
+201.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+201.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+201.png [Weighted 50:50] output is unavailable.
+201.png [Adaptive fusion] output is unavailable.
+201.png [Spatial-adaptive fusion] output is unavailable.
+201.png [DL-dominant 90:10] output is unavailable.
+201.png [DL-dominant 95:5] output is unavailable.
+201.png [DL-dominant 80:20] output is unavailable.
+206.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+206.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+206.png [Weighted 50:50] output is unavailable.
+206.png [Adaptive fusion] output is unavailable.
+206.png [Spatial-adaptive fusion] output is unavailable.
+206.png [DL-dominant 90:10] output is unavailable.
+206.png [DL-dominant 95:5] output is unavailable.
+206.png [DL-dominant 80:20] output is unavailable.
+21.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+21.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+21.png [Weighted 50:50] output is unavailable.
+21.png [Adaptive fusion] output is unavailable.
+21.png [Spatial-adaptive fusion] output is unavailable.
+21.png [DL-dominant 90:10] output is unavailable.
+21.png [DL-dominant 95:5] output is unavailable.
+21.png [DL-dominant 80:20] output is unavailable.
+211.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+211.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+211.png [Weighted 50:50] output is unavailable.
+211.png [Adaptive fusion] output is unavailable.
+211.png [Spatial-adaptive fusion] output is unavailable.
+211.png [DL-dominant 90:10] output is unavailable.
+211.png [DL-dominant 95:5] output is unavailable.
+211.png [DL-dominant 80:20] output is unavailable.
+212.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+212.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+212.png [Weighted 50:50] output is unavailable.
+212.png [Adaptive fusion] output is unavailable.
+212.png [Spatial-adaptive fusion] output is unavailable.
+212.png [DL-dominant 90:10] output is unavailable.
+212.png [DL-dominant 95:5] output is unavailable.
+212.png [DL-dominant 80:20] output is unavailable.
+213.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+213.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+213.png [Weighted 50:50] output is unavailable.
+213.png [Adaptive fusion] output is unavailable.
+213.png [Spatial-adaptive fusion] output is unavailable.
+213.png [DL-dominant 90:10] output is unavailable.
+213.png [DL-dominant 95:5] output is unavailable.
+213.png [DL-dominant 80:20] output is unavailable.
+215.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+215.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+215.png [Weighted 50:50] output is unavailable.
+215.png [Adaptive fusion] output is unavailable.
+215.png [Spatial-adaptive fusion] output is unavailable.
+215.png [DL-dominant 90:10] output is unavailable.
+215.png [DL-dominant 95:5] output is unavailable.
+215.png [DL-dominant 80:20] output is unavailable.
+233.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+233.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+233.png [Weighted 50:50] output is unavailable.
+233.png [Adaptive fusion] output is unavailable.
+233.png [Spatial-adaptive fusion] output is unavailable.
+233.png [DL-dominant 90:10] output is unavailable.
+233.png [DL-dominant 95:5] output is unavailable.
+233.png [DL-dominant 80:20] output is unavailable.
+236.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+236.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+236.png [Weighted 50:50] output is unavailable.
+236.png [Adaptive fusion] output is unavailable.
+236.png [Spatial-adaptive fusion] output is unavailable.
+236.png [DL-dominant 90:10] output is unavailable.
+236.png [DL-dominant 95:5] output is unavailable.
+236.png [DL-dominant 80:20] output is unavailable.
+243.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+243.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+243.png [Weighted 50:50] output is unavailable.
+243.png [Adaptive fusion] output is unavailable.
+243.png [Spatial-adaptive fusion] output is unavailable.
+243.png [DL-dominant 90:10] output is unavailable.
+243.png [DL-dominant 95:5] output is unavailable.
+243.png [DL-dominant 80:20] output is unavailable.
+244.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+244.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+244.png [Weighted 50:50] output is unavailable.
+244.png [Adaptive fusion] output is unavailable.
+244.png [Spatial-adaptive fusion] output is unavailable.
+244.png [DL-dominant 90:10] output is unavailable.
+244.png [DL-dominant 95:5] output is unavailable.
+244.png [DL-dominant 80:20] output is unavailable.
+248.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+248.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+248.png [Weighted 50:50] output is unavailable.
+248.png [Adaptive fusion] output is unavailable.
+248.png [Spatial-adaptive fusion] output is unavailable.
+248.png [DL-dominant 90:10] output is unavailable.
+248.png [DL-dominant 95:5] output is unavailable.
+248.png [DL-dominant 80:20] output is unavailable.
+253.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+253.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+253.png [Weighted 50:50] output is unavailable.
+253.png [Adaptive fusion] output is unavailable.
+253.png [Spatial-adaptive fusion] output is unavailable.
+253.png [DL-dominant 90:10] output is unavailable.
+253.png [DL-dominant 95:5] output is unavailable.
+253.png [DL-dominant 80:20] output is unavailable.
+254.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+254.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+254.png [Weighted 50:50] output is unavailable.
+254.png [Adaptive fusion] output is unavailable.
+254.png [Spatial-adaptive fusion] output is unavailable.
+254.png [DL-dominant 90:10] output is unavailable.
+254.png [DL-dominant 95:5] output is unavailable.
+254.png [DL-dominant 80:20] output is unavailable.
+262.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+262.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+262.png [Weighted 50:50] output is unavailable.
+262.png [Adaptive fusion] output is unavailable.
+262.png [Spatial-adaptive fusion] output is unavailable.
+262.png [DL-dominant 90:10] output is unavailable.
+262.png [DL-dominant 95:5] output is unavailable.
+262.png [DL-dominant 80:20] output is unavailable.
+265.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+265.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+265.png [Weighted 50:50] output is unavailable.
+265.png [Adaptive fusion] output is unavailable.
+265.png [Spatial-adaptive fusion] output is unavailable.
+265.png [DL-dominant 90:10] output is unavailable.
+265.png [DL-dominant 95:5] output is unavailable.
+265.png [DL-dominant 80:20] output is unavailable.
+36.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+36.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+36.png [Weighted 50:50] output is unavailable.
+36.png [Adaptive fusion] output is unavailable.
+36.png [Spatial-adaptive fusion] output is unavailable.
+36.png [DL-dominant 90:10] output is unavailable.
+36.png [DL-dominant 95:5] output is unavailable.
+36.png [DL-dominant 80:20] output is unavailable.
+38.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+38.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+38.png [Weighted 50:50] output is unavailable.
+38.png [Adaptive fusion] output is unavailable.
+38.png [Spatial-adaptive fusion] output is unavailable.
+38.png [DL-dominant 90:10] output is unavailable.
+38.png [DL-dominant 95:5] output is unavailable.
+38.png [DL-dominant 80:20] output is unavailable.
+40.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+40.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+40.png [Weighted 50:50] output is unavailable.
+40.png [Adaptive fusion] output is unavailable.
+40.png [Spatial-adaptive fusion] output is unavailable.
+40.png [DL-dominant 90:10] output is unavailable.
+40.png [DL-dominant 95:5] output is unavailable.
+40.png [DL-dominant 80:20] output is unavailable.
+460.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+460.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+460.png [Weighted 50:50] output is unavailable.
+460.png [Adaptive fusion] output is unavailable.
+460.png [Spatial-adaptive fusion] output is unavailable.
+460.png [DL-dominant 90:10] output is unavailable.
+460.png [DL-dominant 95:5] output is unavailable.
+460.png [DL-dominant 80:20] output is unavailable.
+472.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+472.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+472.png [Weighted 50:50] output is unavailable.
+472.png [Adaptive fusion] output is unavailable.
+472.png [Spatial-adaptive fusion] output is unavailable.
+472.png [DL-dominant 90:10] output is unavailable.
+472.png [DL-dominant 95:5] output is unavailable.
+472.png [DL-dominant 80:20] output is unavailable.
+479.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+479.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+479.png [Weighted 50:50] output is unavailable.
+479.png [Adaptive fusion] output is unavailable.
+479.png [Spatial-adaptive fusion] output is unavailable.
+479.png [DL-dominant 90:10] output is unavailable.
+479.png [DL-dominant 95:5] output is unavailable.
+479.png [DL-dominant 80:20] output is unavailable.
+48.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+48.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+48.png [Weighted 50:50] output is unavailable.
+48.png [Adaptive fusion] output is unavailable.
+48.png [Spatial-adaptive fusion] output is unavailable.
+48.png [DL-dominant 90:10] output is unavailable.
+48.png [DL-dominant 95:5] output is unavailable.
+48.png [DL-dominant 80:20] output is unavailable.
+482.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+482.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+482.png [Weighted 50:50] output is unavailable.
+482.png [Adaptive fusion] output is unavailable.
+482.png [Spatial-adaptive fusion] output is unavailable.
+482.png [DL-dominant 90:10] output is unavailable.
+482.png [DL-dominant 95:5] output is unavailable.
+482.png [DL-dominant 80:20] output is unavailable.
+486.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+486.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+486.png [Weighted 50:50] output is unavailable.
+486.png [Adaptive fusion] output is unavailable.
+486.png [Spatial-adaptive fusion] output is unavailable.
+486.png [DL-dominant 90:10] output is unavailable.
+486.png [DL-dominant 95:5] output is unavailable.
+486.png [DL-dominant 80:20] output is unavailable.
+495.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+495.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+495.png [Weighted 50:50] output is unavailable.
+495.png [Adaptive fusion] output is unavailable.
+495.png [Spatial-adaptive fusion] output is unavailable.
+495.png [DL-dominant 90:10] output is unavailable.
+495.png [DL-dominant 95:5] output is unavailable.
+495.png [DL-dominant 80:20] output is unavailable.
+498.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+498.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+498.png [Weighted 50:50] output is unavailable.
+498.png [Adaptive fusion] output is unavailable.
+498.png [Spatial-adaptive fusion] output is unavailable.
+498.png [DL-dominant 90:10] output is unavailable.
+498.png [DL-dominant 95:5] output is unavailable.
+498.png [DL-dominant 80:20] output is unavailable.
+5.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+5.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+5.png [Weighted 50:50] output is unavailable.
+5.png [Adaptive fusion] output is unavailable.
+5.png [Spatial-adaptive fusion] output is unavailable.
+5.png [DL-dominant 90:10] output is unavailable.
+5.png [DL-dominant 95:5] output is unavailable.
+5.png [DL-dominant 80:20] output is unavailable.
+505.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+505.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+505.png [Weighted 50:50] output is unavailable.
+505.png [Adaptive fusion] output is unavailable.
+505.png [Spatial-adaptive fusion] output is unavailable.
+505.png [DL-dominant 90:10] output is unavailable.
+505.png [DL-dominant 95:5] output is unavailable.
+505.png [DL-dominant 80:20] output is unavailable.
+512.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+512.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+512.png [Weighted 50:50] output is unavailable.
+512.png [Adaptive fusion] output is unavailable.
+512.png [Spatial-adaptive fusion] output is unavailable.
+512.png [DL-dominant 90:10] output is unavailable.
+512.png [DL-dominant 95:5] output is unavailable.
+512.png [DL-dominant 80:20] output is unavailable.
+514.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+514.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+514.png [Weighted 50:50] output is unavailable.
+514.png [Adaptive fusion] output is unavailable.
+514.png [Spatial-adaptive fusion] output is unavailable.
+514.png [DL-dominant 90:10] output is unavailable.
+514.png [DL-dominant 95:5] output is unavailable.
+514.png [DL-dominant 80:20] output is unavailable.
+517.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+517.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+517.png [Weighted 50:50] output is unavailable.
+517.png [Adaptive fusion] output is unavailable.
+517.png [Spatial-adaptive fusion] output is unavailable.
+517.png [DL-dominant 90:10] output is unavailable.
+517.png [DL-dominant 95:5] output is unavailable.
+517.png [DL-dominant 80:20] output is unavailable.
+52.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+52.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+52.png [Weighted 50:50] output is unavailable.
+52.png [Adaptive fusion] output is unavailable.
+52.png [Spatial-adaptive fusion] output is unavailable.
+52.png [DL-dominant 90:10] output is unavailable.
+52.png [DL-dominant 95:5] output is unavailable.
+52.png [DL-dominant 80:20] output is unavailable.
+538.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+538.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+538.png [Weighted 50:50] output is unavailable.
+538.png [Adaptive fusion] output is unavailable.
+538.png [Spatial-adaptive fusion] output is unavailable.
+538.png [DL-dominant 90:10] output is unavailable.
+538.png [DL-dominant 95:5] output is unavailable.
+538.png [DL-dominant 80:20] output is unavailable.
+550.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+550.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+550.png [Weighted 50:50] output is unavailable.
+550.png [Adaptive fusion] output is unavailable.
+550.png [Spatial-adaptive fusion] output is unavailable.
+550.png [DL-dominant 90:10] output is unavailable.
+550.png [DL-dominant 95:5] output is unavailable.
+550.png [DL-dominant 80:20] output is unavailable.
+556.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+556.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+556.png [Weighted 50:50] output is unavailable.
+556.png [Adaptive fusion] output is unavailable.
+556.png [Spatial-adaptive fusion] output is unavailable.
+556.png [DL-dominant 90:10] output is unavailable.
+556.png [DL-dominant 95:5] output is unavailable.
+556.png [DL-dominant 80:20] output is unavailable.
+558.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+558.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+558.png [Weighted 50:50] output is unavailable.
+558.png [Adaptive fusion] output is unavailable.
+558.png [Spatial-adaptive fusion] output is unavailable.
+558.png [DL-dominant 90:10] output is unavailable.
+558.png [DL-dominant 95:5] output is unavailable.
+558.png [DL-dominant 80:20] output is unavailable.
+576.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+576.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+576.png [Weighted 50:50] output is unavailable.
+576.png [Adaptive fusion] output is unavailable.
+576.png [Spatial-adaptive fusion] output is unavailable.
+576.png [DL-dominant 90:10] output is unavailable.
+576.png [DL-dominant 95:5] output is unavailable.
+576.png [DL-dominant 80:20] output is unavailable.
+579.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+579.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+579.png [Weighted 50:50] output is unavailable.
+579.png [Adaptive fusion] output is unavailable.
+579.png [Spatial-adaptive fusion] output is unavailable.
+579.png [DL-dominant 90:10] output is unavailable.
+579.png [DL-dominant 95:5] output is unavailable.
+579.png [DL-dominant 80:20] output is unavailable.
+58.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+58.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+58.png [Weighted 50:50] output is unavailable.
+58.png [Adaptive fusion] output is unavailable.
+58.png [Spatial-adaptive fusion] output is unavailable.
+58.png [DL-dominant 90:10] output is unavailable.
+58.png [DL-dominant 95:5] output is unavailable.
+58.png [DL-dominant 80:20] output is unavailable.
+580.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+580.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+580.png [Weighted 50:50] output is unavailable.
+580.png [Adaptive fusion] output is unavailable.
+580.png [Spatial-adaptive fusion] output is unavailable.
+580.png [DL-dominant 90:10] output is unavailable.
+580.png [DL-dominant 95:5] output is unavailable.
+580.png [DL-dominant 80:20] output is unavailable.
+583.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+583.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+583.png [Weighted 50:50] output is unavailable.
+583.png [Adaptive fusion] output is unavailable.
+583.png [Spatial-adaptive fusion] output is unavailable.
+583.png [DL-dominant 90:10] output is unavailable.
+583.png [DL-dominant 95:5] output is unavailable.
+583.png [DL-dominant 80:20] output is unavailable.
+587.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+587.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+587.png [Weighted 50:50] output is unavailable.
+587.png [Adaptive fusion] output is unavailable.
+587.png [Spatial-adaptive fusion] output is unavailable.
+587.png [DL-dominant 90:10] output is unavailable.
+587.png [DL-dominant 95:5] output is unavailable.
+587.png [DL-dominant 80:20] output is unavailable.
+588.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+588.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+588.png [Weighted 50:50] output is unavailable.
+588.png [Adaptive fusion] output is unavailable.
+588.png [Spatial-adaptive fusion] output is unavailable.
+588.png [DL-dominant 90:10] output is unavailable.
+588.png [DL-dominant 95:5] output is unavailable.
+588.png [DL-dominant 80:20] output is unavailable.
+597.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+597.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+597.png [Weighted 50:50] output is unavailable.
+597.png [Adaptive fusion] output is unavailable.
+597.png [Spatial-adaptive fusion] output is unavailable.
+597.png [DL-dominant 90:10] output is unavailable.
+597.png [DL-dominant 95:5] output is unavailable.
+597.png [DL-dominant 80:20] output is unavailable.
+611.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+611.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+611.png [Weighted 50:50] output is unavailable.
+611.png [Adaptive fusion] output is unavailable.
+611.png [Spatial-adaptive fusion] output is unavailable.
+611.png [DL-dominant 90:10] output is unavailable.
+611.png [DL-dominant 95:5] output is unavailable.
+611.png [DL-dominant 80:20] output is unavailable.
+612.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+612.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+612.png [Weighted 50:50] output is unavailable.
+612.png [Adaptive fusion] output is unavailable.
+612.png [Spatial-adaptive fusion] output is unavailable.
+612.png [DL-dominant 90:10] output is unavailable.
+612.png [DL-dominant 95:5] output is unavailable.
+612.png [DL-dominant 80:20] output is unavailable.
+616.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+616.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+616.png [Weighted 50:50] output is unavailable.
+616.png [Adaptive fusion] output is unavailable.
+616.png [Spatial-adaptive fusion] output is unavailable.
+616.png [DL-dominant 90:10] output is unavailable.
+616.png [DL-dominant 95:5] output is unavailable.
+616.png [DL-dominant 80:20] output is unavailable.
+62.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+62.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+62.png [Weighted 50:50] output is unavailable.
+62.png [Adaptive fusion] output is unavailable.
+62.png [Spatial-adaptive fusion] output is unavailable.
+62.png [DL-dominant 90:10] output is unavailable.
+62.png [DL-dominant 95:5] output is unavailable.
+62.png [DL-dominant 80:20] output is unavailable.
+620.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+620.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+620.png [Weighted 50:50] output is unavailable.
+620.png [Adaptive fusion] output is unavailable.
+620.png [Spatial-adaptive fusion] output is unavailable.
+620.png [DL-dominant 90:10] output is unavailable.
+620.png [DL-dominant 95:5] output is unavailable.
+620.png [DL-dominant 80:20] output is unavailable.
+621.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+621.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+621.png [Weighted 50:50] output is unavailable.
+621.png [Adaptive fusion] output is unavailable.
+621.png [Spatial-adaptive fusion] output is unavailable.
+621.png [DL-dominant 90:10] output is unavailable.
+621.png [DL-dominant 95:5] output is unavailable.
+621.png [DL-dominant 80:20] output is unavailable.
+624.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+624.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+624.png [Weighted 50:50] output is unavailable.
+624.png [Adaptive fusion] output is unavailable.
+624.png [Spatial-adaptive fusion] output is unavailable.
+624.png [DL-dominant 90:10] output is unavailable.
+624.png [DL-dominant 95:5] output is unavailable.
+624.png [DL-dominant 80:20] output is unavailable.
+633.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+633.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+633.png [Weighted 50:50] output is unavailable.
+633.png [Adaptive fusion] output is unavailable.
+633.png [Spatial-adaptive fusion] output is unavailable.
+633.png [DL-dominant 90:10] output is unavailable.
+633.png [DL-dominant 95:5] output is unavailable.
+633.png [DL-dominant 80:20] output is unavailable.
+634.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+634.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+634.png [Weighted 50:50] output is unavailable.
+634.png [Adaptive fusion] output is unavailable.
+634.png [Spatial-adaptive fusion] output is unavailable.
+634.png [DL-dominant 90:10] output is unavailable.
+634.png [DL-dominant 95:5] output is unavailable.
+634.png [DL-dominant 80:20] output is unavailable.
+637.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+637.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+637.png [Weighted 50:50] output is unavailable.
+637.png [Adaptive fusion] output is unavailable.
+637.png [Spatial-adaptive fusion] output is unavailable.
+637.png [DL-dominant 90:10] output is unavailable.
+637.png [DL-dominant 95:5] output is unavailable.
+637.png [DL-dominant 80:20] output is unavailable.
+639.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+639.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+639.png [Weighted 50:50] output is unavailable.
+639.png [Adaptive fusion] output is unavailable.
+639.png [Spatial-adaptive fusion] output is unavailable.
+639.png [DL-dominant 90:10] output is unavailable.
+639.png [DL-dominant 95:5] output is unavailable.
+639.png [DL-dominant 80:20] output is unavailable.
+641.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+641.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+641.png [Weighted 50:50] output is unavailable.
+641.png [Adaptive fusion] output is unavailable.
+641.png [Spatial-adaptive fusion] output is unavailable.
+641.png [DL-dominant 90:10] output is unavailable.
+641.png [DL-dominant 95:5] output is unavailable.
+641.png [DL-dominant 80:20] output is unavailable.
+651.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+651.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+651.png [Weighted 50:50] output is unavailable.
+651.png [Adaptive fusion] output is unavailable.
+651.png [Spatial-adaptive fusion] output is unavailable.
+651.png [DL-dominant 90:10] output is unavailable.
+651.png [DL-dominant 95:5] output is unavailable.
+651.png [DL-dominant 80:20] output is unavailable.
+660.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+660.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+660.png [Weighted 50:50] output is unavailable.
+660.png [Adaptive fusion] output is unavailable.
+660.png [Spatial-adaptive fusion] output is unavailable.
+660.png [DL-dominant 90:10] output is unavailable.
+660.png [DL-dominant 95:5] output is unavailable.
+660.png [DL-dominant 80:20] output is unavailable.
+662.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+662.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+662.png [Weighted 50:50] output is unavailable.
+662.png [Adaptive fusion] output is unavailable.
+662.png [Spatial-adaptive fusion] output is unavailable.
+662.png [DL-dominant 90:10] output is unavailable.
+662.png [DL-dominant 95:5] output is unavailable.
+662.png [DL-dominant 80:20] output is unavailable.
+664.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+664.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+664.png [Weighted 50:50] output is unavailable.
+664.png [Adaptive fusion] output is unavailable.
+664.png [Spatial-adaptive fusion] output is unavailable.
+664.png [DL-dominant 90:10] output is unavailable.
+664.png [DL-dominant 95:5] output is unavailable.
+664.png [DL-dominant 80:20] output is unavailable.
+678.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+678.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+678.png [Weighted 50:50] output is unavailable.
+678.png [Adaptive fusion] output is unavailable.
+678.png [Spatial-adaptive fusion] output is unavailable.
+678.png [DL-dominant 90:10] output is unavailable.
+678.png [DL-dominant 95:5] output is unavailable.
+678.png [DL-dominant 80:20] output is unavailable.
+68.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+68.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+68.png [Weighted 50:50] output is unavailable.
+68.png [Adaptive fusion] output is unavailable.
+68.png [Spatial-adaptive fusion] output is unavailable.
+68.png [DL-dominant 90:10] output is unavailable.
+68.png [DL-dominant 95:5] output is unavailable.
+68.png [DL-dominant 80:20] output is unavailable.
+682.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+682.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+682.png [Weighted 50:50] output is unavailable.
+682.png [Adaptive fusion] output is unavailable.
+682.png [Spatial-adaptive fusion] output is unavailable.
+682.png [DL-dominant 90:10] output is unavailable.
+682.png [DL-dominant 95:5] output is unavailable.
+682.png [DL-dominant 80:20] output is unavailable.
+687.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+687.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+687.png [Weighted 50:50] output is unavailable.
+687.png [Adaptive fusion] output is unavailable.
+687.png [Spatial-adaptive fusion] output is unavailable.
+687.png [DL-dominant 90:10] output is unavailable.
+687.png [DL-dominant 95:5] output is unavailable.
+687.png [DL-dominant 80:20] output is unavailable.
+692.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+692.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+692.png [Weighted 50:50] output is unavailable.
+692.png [Adaptive fusion] output is unavailable.
+692.png [Spatial-adaptive fusion] output is unavailable.
+692.png [DL-dominant 90:10] output is unavailable.
+692.png [DL-dominant 95:5] output is unavailable.
+692.png [DL-dominant 80:20] output is unavailable.
+696.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+696.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+696.png [Weighted 50:50] output is unavailable.
+696.png [Adaptive fusion] output is unavailable.
+696.png [Spatial-adaptive fusion] output is unavailable.
+696.png [DL-dominant 90:10] output is unavailable.
+696.png [DL-dominant 95:5] output is unavailable.
+696.png [DL-dominant 80:20] output is unavailable.
+697.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+697.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+697.png [Weighted 50:50] output is unavailable.
+697.png [Adaptive fusion] output is unavailable.
+697.png [Spatial-adaptive fusion] output is unavailable.
+697.png [DL-dominant 90:10] output is unavailable.
+697.png [DL-dominant 95:5] output is unavailable.
+697.png [DL-dominant 80:20] output is unavailable.
+699.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+699.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+699.png [Weighted 50:50] output is unavailable.
+699.png [Adaptive fusion] output is unavailable.
+699.png [Spatial-adaptive fusion] output is unavailable.
+699.png [DL-dominant 90:10] output is unavailable.
+699.png [DL-dominant 95:5] output is unavailable.
+699.png [DL-dominant 80:20] output is unavailable.
+701.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+701.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+701.png [Weighted 50:50] output is unavailable.
+701.png [Adaptive fusion] output is unavailable.
+701.png [Spatial-adaptive fusion] output is unavailable.
+701.png [DL-dominant 90:10] output is unavailable.
+701.png [DL-dominant 95:5] output is unavailable.
+701.png [DL-dominant 80:20] output is unavailable.
+713.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+713.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+713.png [Weighted 50:50] output is unavailable.
+713.png [Adaptive fusion] output is unavailable.
+713.png [Spatial-adaptive fusion] output is unavailable.
+713.png [DL-dominant 90:10] output is unavailable.
+713.png [DL-dominant 95:5] output is unavailable.
+713.png [DL-dominant 80:20] output is unavailable.
+722.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+722.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+722.png [Weighted 50:50] output is unavailable.
+722.png [Adaptive fusion] output is unavailable.
+722.png [Spatial-adaptive fusion] output is unavailable.
+722.png [DL-dominant 90:10] output is unavailable.
+722.png [DL-dominant 95:5] output is unavailable.
+722.png [DL-dominant 80:20] output is unavailable.
+738.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+738.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+738.png [Weighted 50:50] output is unavailable.
+738.png [Adaptive fusion] output is unavailable.
+738.png [Spatial-adaptive fusion] output is unavailable.
+738.png [DL-dominant 90:10] output is unavailable.
+738.png [DL-dominant 95:5] output is unavailable.
+738.png [DL-dominant 80:20] output is unavailable.
+757.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+757.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+757.png [Weighted 50:50] output is unavailable.
+757.png [Adaptive fusion] output is unavailable.
+757.png [Spatial-adaptive fusion] output is unavailable.
+757.png [DL-dominant 90:10] output is unavailable.
+757.png [DL-dominant 95:5] output is unavailable.
+757.png [DL-dominant 80:20] output is unavailable.
+765.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+765.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+765.png [Weighted 50:50] output is unavailable.
+765.png [Adaptive fusion] output is unavailable.
+765.png [Spatial-adaptive fusion] output is unavailable.
+765.png [DL-dominant 90:10] output is unavailable.
+765.png [DL-dominant 95:5] output is unavailable.
+765.png [DL-dominant 80:20] output is unavailable.
+771.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+771.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+771.png [Weighted 50:50] output is unavailable.
+771.png [Adaptive fusion] output is unavailable.
+771.png [Spatial-adaptive fusion] output is unavailable.
+771.png [DL-dominant 90:10] output is unavailable.
+771.png [DL-dominant 95:5] output is unavailable.
+771.png [DL-dominant 80:20] output is unavailable.
+777.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+777.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+777.png [Weighted 50:50] output is unavailable.
+777.png [Adaptive fusion] output is unavailable.
+777.png [Spatial-adaptive fusion] output is unavailable.
+777.png [DL-dominant 90:10] output is unavailable.
+777.png [DL-dominant 95:5] output is unavailable.
+777.png [DL-dominant 80:20] output is unavailable.
+78.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+78.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+78.png [Weighted 50:50] output is unavailable.
+78.png [Adaptive fusion] output is unavailable.
+78.png [Spatial-adaptive fusion] output is unavailable.
+78.png [DL-dominant 90:10] output is unavailable.
+78.png [DL-dominant 95:5] output is unavailable.
+78.png [DL-dominant 80:20] output is unavailable.
+784.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+784.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+784.png [Weighted 50:50] output is unavailable.
+784.png [Adaptive fusion] output is unavailable.
+784.png [Spatial-adaptive fusion] output is unavailable.
+784.png [DL-dominant 90:10] output is unavailable.
+784.png [DL-dominant 95:5] output is unavailable.
+784.png [DL-dominant 80:20] output is unavailable.
+785.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+785.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+785.png [Weighted 50:50] output is unavailable.
+785.png [Adaptive fusion] output is unavailable.
+785.png [Spatial-adaptive fusion] output is unavailable.
+785.png [DL-dominant 90:10] output is unavailable.
+785.png [DL-dominant 95:5] output is unavailable.
+785.png [DL-dominant 80:20] output is unavailable.
+789.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+789.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+789.png [Weighted 50:50] output is unavailable.
+789.png [Adaptive fusion] output is unavailable.
+789.png [Spatial-adaptive fusion] output is unavailable.
+789.png [DL-dominant 90:10] output is unavailable.
+789.png [DL-dominant 95:5] output is unavailable.
+789.png [DL-dominant 80:20] output is unavailable.
+9.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+9.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+9.png [Weighted 50:50] output is unavailable.
+9.png [Adaptive fusion] output is unavailable.
+9.png [Spatial-adaptive fusion] output is unavailable.
+9.png [DL-dominant 90:10] output is unavailable.
+9.png [DL-dominant 95:5] output is unavailable.
+9.png [DL-dominant 80:20] output is unavailable.
+94.png [Classical CV] inference failed: AttributeError: module 'cv2' has no attribute 'ximgproc'
+94.png [Pretrained Retinexformer] NIQE failed: TypeError: calculate_niqe() takes 1 positional argument but 2 were given
+94.png [Weighted 50:50] output is unavailable.
+94.png [Adaptive fusion] output is unavailable.
+94.png [Spatial-adaptive fusion] output is unavailable.
+94.png [DL-dominant 90:10] output is unavailable.
+94.png [DL-dominant 95:5] output is unavailable.
+94.png [DL-dominant 80:20] output is unavailable.

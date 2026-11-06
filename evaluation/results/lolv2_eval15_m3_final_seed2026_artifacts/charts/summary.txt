@@ -1,0 +1,33 @@
+Evaluation results summary
+Aggregates are computed from valid CSV values only; missing values are excluded.
+Standard deviation is population standard deviation. Latency is not a quality score.
+
+PSNR (higher is better):
+  Classical CV: mean=16.37, median=15.81, std=3.437, n=15
+  Pretrained Retinexformer: mean=21.77, median=21.87, std=2.627, n=15
+  Hybrid Intelligence: mean=18.14, median=17.63, std=3.607, n=15
+
+SSIM (higher is better):
+  Classical CV: mean=0.5048, median=0.5188, std=0.1232, n=15
+  Pretrained Retinexformer: mean=0.8224, median=0.8407, std=0.0652, n=15
+  Hybrid Intelligence: mean=0.5885, median=0.599, std=0.1187, n=15
+
+LPIPS (lower is better):
+  Classical CV: mean=0.359, median=0.3271, std=0.1383, n=15
+  Pretrained Retinexformer: mean=0.1524, median=0.1557, std=0.0389, n=15
+  Hybrid Intelligence: mean=0.2943, median=0.2737, std=0.119, n=15
+
+NIQE (lower is better):
+  Classical CV: mean=7.98, median=7.452, std=1.214, n=15
+  Pretrained Retinexformer: mean=3.877, median=3.746, std=0.6628, n=15
+  Hybrid Intelligence: mean=7.034, median=6.538, std=1.192, n=15
+
+Inference latency (lower is better):
+  Classical CV: mean=88.37, median=84.7, std=22.46, n=15
+  Pretrained Retinexformer: mean=1961, median=1961, std=128, n=15
+  Hybrid Intelligence: mean=2395, median=2036, std=954.9, n=15
+
+Hybrid fusion latency (lower is better):
+  Classical CV: mean=N/A, median=N/A, std=N/A, n=0
+  Pretrained Retinexformer: mean=N/A, median=N/A, std=N/A, n=0
+  Hybrid Intelligence: mean=47.51, median=43.34, std=9.657, n=15

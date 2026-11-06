@@ -1,0 +1,6 @@
+eval15 per-image comparison notes
+The existing spatial-adaptive fusion is shown as an experimental Hybrid baseline.
+PSNR/SSIM/LPIPS compare against paired ground truth; NIQE is no-reference and is not fidelity.
+Best/worst examples rank Hybrid against RetinexFormer by per-image PSNR delta only.
+Least degraded by hybrid: 547.png (Hybrid − RetinexFormer PSNR: +5.2559 dB)
+Most degraded by hybrid: 55.png (Hybrid − RetinexFormer PSNR: -7.9324 dB)

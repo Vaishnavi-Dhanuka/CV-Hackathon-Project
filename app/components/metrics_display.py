@@ -153,15 +153,64 @@ def render_image_analysis(image: Image.Image, analysis: ImageAnalysis) -> None:
         )
 
 
-def render_metrics() -> None:
-    """Show evaluation metric slots without inventing results."""
+def render_metrics(
+    *,
+    niqe: float | None = None,
+    niqe_error: str | None = None,
+    noise_reduction: float | None = None,
+    noise_reduction_error: str | None = None,
+    latency_seconds: float | None = None,
+    latency_label: str = "Latency",
+) -> None:
+    """Show available no-reference metrics and keep reference metrics unavailable."""
     st.divider()
     st.markdown(
         '<div class="lumina-eyebrow">03 / Evaluation</div>',
         unsafe_allow_html=True,
     )
     st.subheader("Evaluation metrics")
-    st.caption("Values remain unavailable until the evaluation pipeline is integrated.")
+    st.caption(
+        "PSNR, SSIM, LPIPS, and edge preservation remain N/A because no clean "
+        "ground-truth reference is available for this upload."
+    )
     columns = st.columns(5)
-    for column, label in zip(columns, ["PSNR", "SSIM", "LPIPS", "NIQE", "Latency"]):
-        column.metric(label, "N/A")
+    columns[0].metric("PSNR", "N/A")
+    columns[1].metric("SSIM", "N/A")
+    columns[2].metric("LPIPS", "N/A")
+    columns[3].metric("NIQE", f"{niqe:.3f}" if niqe is not None else "N/A")
+    columns[4].metric(
+        latency_label,
+        f"{latency_seconds:.2f} s" if latency_seconds is not None else "N/A",
+    )
+
+    secondary_columns = st.columns(2)
+    secondary_columns[0].metric(
+        "Noise reduction",
+        f"{noise_reduction:.2f}" if noise_reduction is not None else "N/A",
+        help=(
+            "Signed input noise-proxy minus enhanced noise-proxy difference; "
+            "positive values indicate a lower estimated noise proxy."
+        ),
+    )
+    secondary_columns[1].metric(
+        "Edge preservation",
+        "N/A",
+        help="Requires a clean ground-truth reference image.",
+    )
+
+    if niqe_error is not None:
+        st.caption(f"NIQE unavailable: {niqe_error}")
+    elif niqe is None:
+        st.caption(
+            "NIQE is available after an image or enhancement output is selected."
+        )
+    if noise_reduction_error is not None:
+        st.caption(f"Noise reduction unavailable: {noise_reduction_error}")
+    elif noise_reduction is None:
+        st.caption(
+            "Noise reduction is available after an enhancement output is produced."
+        )
+    st.caption(
+        "Latency and noise-proxy differences describe processing time and a "
+        "signal statistic; neither measures restoration accuracy."
+    )

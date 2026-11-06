@@ -1,5 +1,5 @@
 """Hybrid enhancement integration package."""
 
-from .fusion import weighted_fusion
+from .fusion import adaptive_fusion, spatial_adaptive_fusion, weighted_fusion
 
-__all__ = ["weighted_fusion"]
+__all__ = ["adaptive_fusion", "spatial_adaptive_fusion", "weighted_fusion"]

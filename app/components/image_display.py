@@ -31,8 +31,14 @@ def render_upload_details(
 def render_comparison_results(
     image: Image.Image | None = None,
     selected_mode: str = "Classical CV",
+    classical_image: Image.Image | None = None,
+    deep_learning_image: Image.Image | None = None,
+    hybrid_image: Image.Image | None = None,
+    classical_error: str | None = None,
+    deep_learning_error: str | None = None,
+    hybrid_error: str | None = None,
 ) -> None:
-    """Render the original input and explicit placeholders for future outputs."""
+    """Render available pipeline outputs and explicit errors or placeholders."""
     st.divider()
     st.markdown(
         '<div class="lumina-eyebrow">02 / Side-by-side review</div>',
@@ -48,7 +54,7 @@ def render_comparison_results(
     titles = [
         ("Original", "INPUT"),
         ("Classical CV", "CLASSICAL"),
-        ("Deep Learning", "MODEL"),
+        ("Official RetinexFormer", "MODEL"),
         ("Hybrid", "FUSION"),
     ]
 
@@ -64,8 +70,20 @@ def render_comparison_results(
                     st.image(image, use_container_width=True)
                 elif index == 0:
                     st.info("Upload an image to preview the original.")
+                elif title == "Classical CV" and classical_image is not None:
+                    st.image(classical_image, use_container_width=True)
+                elif title == "Classical CV" and classical_error is not None:
+                    st.error(classical_error)
+                elif title == "Official RetinexFormer" and deep_learning_image is not None:
+                    st.image(deep_learning_image, use_container_width=True)
+                elif title == "Official RetinexFormer" and deep_learning_error is not None:
+                    st.error(deep_learning_error)
+                elif title == "Hybrid" and hybrid_image is not None:
+                    st.image(hybrid_image, use_container_width=True)
+                elif title == "Hybrid" and hybrid_error is not None:
+                    st.error(hybrid_error)
                 else:
-                    st.info("Enhancement module is not connected yet.")
+                    st.info("Select this pipeline to generate its comparison output.")
 
 
 def render_intermediate_visualizations() -> None:

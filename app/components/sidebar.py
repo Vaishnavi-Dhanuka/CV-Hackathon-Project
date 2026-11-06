@@ -2,6 +2,13 @@
 
 import streamlit as st
 
+PIPELINE_MODES = (
+    "Original Image",
+    "Classical CV",
+    "Official RetinexFormer",
+    "Hybrid Intelligence",
+)
+
 
 def render_sidebar(has_image: bool, analysis: dict | None = None) -> str:
     """Render project details and return the selected enhancement mode."""
@@ -22,7 +29,7 @@ def render_sidebar(has_image: bool, analysis: dict | None = None) -> str:
         st.markdown("### Pipeline")
         selected_mode = st.radio(
             "Choose a pipeline",
-            ["Classical CV", "Deep Learning", "Hybrid Intelligence"],
+            list(PIPELINE_MODES),
             key="enhancement_mode",
             label_visibility="collapsed",
         )
