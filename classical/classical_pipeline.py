@@ -4,7 +4,8 @@ from contextlib import contextmanager
 import cv2
 import numpy as np
 
-from classical.preprocessing import to_rgb_uint8, resize_if_large, compute_characteristics
+from classical.preprocessing import (to_rgb_uint8, resize_if_large,
+                                     compute_characteristics, estimate_noise)
 from classical.illumination import illumination_analysis
 from classical.retinex import retinex_enhance
 from classical.clahe import apply_clahe
@@ -19,7 +20,27 @@ DEFAULT_CONFIG = {
 
 # Fixed defaults for now; adaptive selection (Task 7) will replace these with per-image values.
 RETINEX_PARAMS = dict(method="guided", gamma=0.5, max_gain=8.0, target_mean=0.5, strength=0.9)
+# Chosen by sweeps on a slice of LOL our485 (see tests/sweep2.py), not on test data.
+DENOISE_SIGMA_PER_NOISE = 6.0           # sigma = 6 x measured noise
+DENOISE_SIGMA_RANGE = (25.0, 70.0)      # grid bounds of the sweep
+CLAHE_PARAMS = dict(clip_limit=1.0, tile_grid=(8, 8), strength=0.5)
+CLAHE_CONTRAST_MAX = 100                # CLAHE only if contrast after denoise is below this
 
+
+def _gray(img):
+    return cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+
+
+def choose_denoise_sigma(img):
+    """Adaptive rule: stronger denoising for noisier images (noise measured on the Retinex output)."""
+    noise = estimate_noise(_gray(img))
+    sigma = float(np.clip(DENOISE_SIGMA_PER_NOISE * noise, *DENOISE_SIGMA_RANGE))
+    return sigma, noise
+
+
+def _contrast(img):
+    p5, p95 = np.percentile(_gray(img), [5, 95])
+    return float(p95 - p5)
 
 @contextmanager
 def _timer(store, name):
@@ -67,10 +88,17 @@ def enhance_classical(image, config=None):
             out = retinex_enhance(out, L=illum["illumination_map"], **RETINEX_PARAMS)
     retinex_out = out
 
+    sigma, noise_meas = None, None
     with _timer(lat, "denoise"):
-        denoised = denoise(out, "guided", sigma=12) if cfg["use_denoise"] else out
+        if cfg["use_denoise"]:
+            sigma, noise_meas = choose_denoise_sigma(out)
+            denoised = denoise(out, "guided", sigma=sigma)
+        else:
+            denoised = out
+    con = _contrast(denoised)
+    clahe_applied = bool(cfg["use_clahe"] and con < CLAHE_CONTRAST_MAX)
     with _timer(lat, "clahe"):
-        clahe_out = apply_clahe(denoised, 2.0, (8, 8)) if cfg["use_clahe"] else denoised
+        clahe_out = apply_clahe(denoised, **CLAHE_PARAMS) if clahe_applied else denoised
     with _timer(lat, "color_correction"):
         final = clahe_out                            # TODO: color_correction.py
 
@@ -84,7 +112,15 @@ def enhance_classical(image, config=None):
         "latency_ms": lat,
         "config": {
             "flags": cfg,
-            "params": {"retinex": dict(RETINEX_PARAMS) if cfg["use_retinex"] else None},
+            "params": {
+                "retinex": dict(RETINEX_PARAMS) if cfg["use_retinex"] else None,
+                "denoise": ({"method": "guided", "sigma": round(sigma, 1),
+                             "measured_noise": round(noise_meas, 2)} if sigma is not None else None),
+                "clahe": {"applied": clahe_applied, "contrast_after_denoise": round(con, 1),
+                          "contrast_max": CLAHE_CONTRAST_MAX,
+                          **{k: (list(v) if isinstance(v, tuple) else v)
+                             for k, v in CLAHE_PARAMS.items()}},
+            },
             "adaptive": False,       # becomes True once Task 7 is in
         },
         "stages_implemented": {"retinex": True, "clahe": True, "denoise": True,
