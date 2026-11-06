@@ -26,6 +26,6 @@ services:
     envVars:
       - key: LUMINA_DL_API_URL
         fromService:
-          type: web
           name: lumina-retinex-api
-          property: url
+          type: web
+          envVarKey: RENDER_EXTERNAL_URL
