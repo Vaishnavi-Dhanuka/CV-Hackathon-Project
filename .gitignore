@@ -8,3 +8,8 @@ results/
 *.pth
 
 tb_logger/
+
+# Local research datasets and comparison repositories
+third_party/ExDark/
+third_party/Zero-DCE-PlusPlus/
+third_party/multinex/
