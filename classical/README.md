@@ -118,3 +118,4 @@ Python 3.13, CPU only. Latency about 170-200 ms per 400x600 image.
 - The unseen photos are our own, contain no faces, and had EXIF/GPS data removed by conversion to PNG. Original files are not committed.
 - LOL, LOL-v2 and eval15 data are not committed and are used under their research terms.
 - Enhanced images are not evidence. The pipeline changes colours and amplifies noise, so its output must not be used for forensic or identification purposes.
+- Early commits on this branch contain LOL dataset images. They were removed from the tree and are used under the dataset's research terms.
