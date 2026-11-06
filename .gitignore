@@ -25,3 +25,6 @@ htmlcov/
 # Temporary files
 *.log
 *.tmp
+
+results/classical_outputs_*/
+results/*.zipdata/

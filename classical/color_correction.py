@@ -4,7 +4,7 @@ import numpy as np
 CAST_LOW, CAST_HIGH = 0.05, 0.20     # cast below LOW: leave colours alone; above HIGH: full correction
 GAIN_RANGE = (0.75, 1.33)            # per-channel white-balance gain limits (stops wild corrections)
 GAMMA_RANGE = (0.8, 1.1)             # adaptive gamma limits (mostly brightens, barely darkens)
-TARGET_MEAN = 0.5                    # same exposure target as Retinex
+TARGET_MEAN = 0.5                    # Retinex uses 0.4 (known mismatch, see README failure analysis)
 CONTRAST_RANGE_MIN = 0.7             # p99-p1 spread (0..1) below this counts as "flat"
 KNEE_NORMAL, KNEE_BRIGHT = 0.85, 0.75
 CONTRAST_STRENGTH = 0.0              # ablation on our485: stretch cost -1.37 dB mean (-14 dB worst), so it is off
