@@ -7,6 +7,7 @@ GAMMA_RANGE = (0.8, 1.1)             # adaptive gamma limits (mostly brightens, 
 TARGET_MEAN = 0.5                    # same exposure target as Retinex
 CONTRAST_RANGE_MIN = 0.7             # p99-p1 spread (0..1) below this counts as "flat"
 KNEE_NORMAL, KNEE_BRIGHT = 0.85, 0.75
+CONTRAST_STRENGTH = 0.0              # ablation on our485: stretch cost -1.37 dB mean (-14 dB worst), so it is off
 
 
 def color_cast(image):
@@ -76,7 +77,7 @@ def choose_color_params(image):
     params = {
         "wb_strength": float(np.clip((cast - CAST_LOW) / (CAST_HIGH - CAST_LOW), 0, 1)),
         "gamma": adaptive_gamma_value(mean_b),
-        "contrast_strength": 0.5 if spread < CONTRAST_RANGE_MIN else 0.0,
+        "contrast_strength": CONTRAST_STRENGTH,
         "knee": KNEE_BRIGHT if hi_frac > 0.02 else KNEE_NORMAL,
     }
     measured = {"color_cast": cast, "mean_brightness": mean_b,
