@@ -66,7 +66,7 @@ def soft_clip(x, knee=0.8):
 
 
 def retinex_enhance(image, method="guided", gamma=0.5, max_gain=8.0,
-                    target_mean=0.42, strength=0.9, L=None):
+                    target_mean=0.5, strength=0.9, L=None):
     """Main entry point. image: uint8 RGB. method: 'guided' (ours), 'msr' or 'ssr'.
     Returns uint8 RGB."""
     img = image.astype(np.float32) / 255.0

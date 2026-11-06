@@ -7,6 +7,8 @@ import numpy as np
 from classical.preprocessing import to_rgb_uint8, resize_if_large, compute_characteristics
 from classical.illumination import illumination_analysis
 from classical.retinex import retinex_enhance
+from classical.clahe import apply_clahe
+from classical.denoising import denoise
 
 DEFAULT_CONFIG = {
     "use_retinex": True,
@@ -16,7 +18,7 @@ DEFAULT_CONFIG = {
 }
 
 # Fixed defaults for now; adaptive selection (Task 7) will replace these with per-image values.
-RETINEX_PARAMS = dict(method="guided", gamma=0.5, max_gain=8.0, target_mean=0.42, strength=0.9)
+RETINEX_PARAMS = dict(method="guided", gamma=0.5, max_gain=8.0, target_mean=0.5, strength=0.9)
 
 
 @contextmanager
@@ -65,12 +67,12 @@ def enhance_classical(image, config=None):
             out = retinex_enhance(out, L=illum["illumination_map"], **RETINEX_PARAMS)
     retinex_out = out
 
-    with _timer(lat, "clahe"):
-        clahe_out = out                              # TODO: clahe.py
     with _timer(lat, "denoise"):
-        denoised = clahe_out                         # TODO: denoising.py
+        denoised = denoise(out, "guided", sigma=12) if cfg["use_denoise"] else out
+    with _timer(lat, "clahe"):
+        clahe_out = apply_clahe(denoised, 2.0, (8, 8)) if cfg["use_clahe"] else denoised
     with _timer(lat, "color_correction"):
-        final = denoised                             # TODO: color_correction.py
+        final = clahe_out                            # TODO: color_correction.py
 
     lat["total"] = round((time.perf_counter() - t_total) * 1000.0, 2)
 
@@ -85,8 +87,8 @@ def enhance_classical(image, config=None):
             "params": {"retinex": dict(RETINEX_PARAMS) if cfg["use_retinex"] else None},
             "adaptive": False,       # becomes True once Task 7 is in
         },
-        "stages_implemented": {"retinex": True, "clahe": False, "denoise": False,
-                               "color_correction": False},
+        "stages_implemented": {"retinex": True, "clahe": True, "denoise": True,
+                       "color_correction": False},
         "input_stats": in_stats,
         "illumination_stats": {k: round(float(illum[k]), 4) for k in
                                ["illum_mean", "illum_cv", "dark_region_fraction", "uneven_fraction"]},
