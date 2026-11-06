@@ -6,3 +6,5 @@ outputs/
 data/
 results/
 *.pth
+
+tb_logger/
