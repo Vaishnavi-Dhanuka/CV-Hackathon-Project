@@ -1,4 +1,4 @@
-
+﻿
 from functools import lru_cache
 from pathlib import Path
 import sys
@@ -12,7 +12,7 @@ from torchvision.transforms.functional import to_tensor, to_pil_image
 ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT / "third_party" / "Retinexformer"
 CONFIG = REPO / "Options" / "RetinexFormer_LOL_v2_real.yml"
-CHECKPOINT = REPO / "pretrained_weights" / "LOL_v2_real.pth"
+CHECKPOINT = ROOT / "results" / "checkpoints" / "official_only" / "retinexformer_official_baseline.pth"
 
 sys.path.insert(0, str(REPO))
 
@@ -98,3 +98,4 @@ def enhance_file(input_path, output_path):
 
     enhanced.save(output_path)
     return output_path
+
