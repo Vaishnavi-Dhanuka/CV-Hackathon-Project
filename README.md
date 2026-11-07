@@ -1,4 +1,4 @@
-﻿# Robust Low-Light Image Restoration and Enhancement
+# Robust Low-Light Image Restoration and Enhancement
 
 A deep-learning-based low-light image enhancement system built around **Retinexformer**, with classical image-processing comparisons and fine-tuned model variants.
 
@@ -143,7 +143,7 @@ datasets are optional and are not needed for the primary inference pipeline.
 The M3 FastAPI production API, Render service configuration, and Streamlit
 backend URL configuration remain in place. The deployed frontend receives
 `LUMINA_DL_API_URL` from the backend service URL; see
-[`RENDER_DEPLOYMENT.md`](./RENDER_DEPLOYMENT.md) for deployment and verification
+[`LUMINA_DEPLOYMENT.md`](./LUMINA_DEPLOYMENT.md) for deployment and verification
 details.
 
 ## 7. Inference
@@ -204,4 +204,4 @@ Evaluation CSVs and generated images are retained locally and are not all commit
 
 ## 10. Team
 
-Collaborative project developed by a team of three members for the computer vision hackathon.
+Collaborative project developed by a team of four members for the computer vision hackathon.

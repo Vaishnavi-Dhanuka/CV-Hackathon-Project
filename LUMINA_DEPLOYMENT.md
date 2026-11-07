@@ -46,10 +46,11 @@ The Blueprint configures these commands and settings:
 | Backend | `git submodule update --init --recursive && python -m pip install -r requirements-render.txt` | `python scripts/fetch_render_checkpoint.py && uvicorn deep_learning.api:app --host 0.0.0.0 --port $PORT` | `/health` |
 | Frontend | `python -m pip install -r requirements-render-frontend.txt` | `python -m streamlit run app/main.py --server.address 0.0.0.0 --server.port $PORT --server.headless true --server.maxUploadSize 10` | `/` |
 
-Both services request Render's `standard` plan in `render.yaml`. The local
-checkpoint-backed CPU smoke test reached 522.9 MiB RSS, so do not use a
-512-MiB service for the backend. Verify the selected plan's current memory
-allocation and upgrade if needed; a 2-GiB-or-larger backend is recommended.
+Both services currently request Render's `free` plan in `render.yaml`. The local
+checkpoint-backed CPU smoke test reached 522.9 MiB RSS, so the backend may
+exceed the available memory on a Free instance. Verify the current memory
+allocation and confirm the required plan with the deployment owner before
+relying on the hosted service. A 2-GiB-or-larger backend is recommended.
 The frontend is a separate process and does not load the PyTorch model.
 
 ## Environment variables
@@ -103,3 +104,17 @@ on the first inference request, so that request may be slower than subsequent
 ones. The 10-MiB/4-MP limits are conservative deployment safeguards, not
 validated quality or capacity thresholds. Streamlit calls the API server-side,
 so browser CORS configuration is not required.
+
+## Render Free Backend Memory Limitation
+
+The Render Free backend exceeded its 512 MB memory limit during model
+inference. Therefore, the Free backend deployment must not be considered
+stable or production-ready. Inference requests may fail when the service
+runs out of memory. A hosting plan or environment with sufficient memory
+is required for reliable model inference.
+
+The public Streamlit frontend is available at:
+https://lumina-streamlit.onrender.com
+
+The frontend being accessible does not guarantee that backend inference
+is operational.
