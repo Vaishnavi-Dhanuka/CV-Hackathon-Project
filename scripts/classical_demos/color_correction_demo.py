@@ -6,7 +6,7 @@ from classical.preprocessing import load_image
 from classical.classical_pipeline import enhance_classical
 from classical.color_correction import color_correct, choose_color_params, color_cast
 
-# usage: python -m tests.test_color_correction <path to our485> [step]
+# usage: python scripts/classical_demos/color_correction_demo.py <path to our485> [step]
 root = sys.argv[1]
 step = int(sys.argv[2]) if len(sys.argv) > 2 else 10
 low_dir, high_dir = os.path.join(root, "low"), os.path.join(root, "high")

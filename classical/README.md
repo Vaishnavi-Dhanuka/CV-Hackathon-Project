@@ -102,6 +102,41 @@ python -m tests.evaluate <eval15\low> <eval15\high> eval15
 
 Python 3.13, CPU only. Latency about 170-200 ms per 400x600 image.
 
+### Component demos and smoke checks
+
+The image demos and input smoke check are in `scripts/classical_demos/` so
+pytest does not mistake their command-line arguments and import-time behavior
+for tests. Run them with the repository on `PYTHONPATH`. The demos write
+relative `results/*.png` outputs under the current working directory; use a
+temporary working directory to keep generated files away from tracked results.
+
+From the repository root in PowerShell:
+
+```powershell
+$repo = (Get-Location).Path
+$work = Join-Path $env:TEMP ("cv-classical-demos-" + [guid]::NewGuid().ToString("N"))
+New-Item -ItemType Directory -Path $work | Out-Null
+$env:PYTHONPATH = $repo
+$env:MPLBACKEND = "Agg"
+Push-Location $work
+
+python "$repo\scripts\classical_demos\clahe_demo.py" "$repo\data\LOLdataset\our485\low\10.png"
+python "$repo\scripts\classical_demos\color_correction_demo.py" "$repo\data\LOLdataset\our485" 485
+python "$repo\scripts\classical_demos\denoising_demo.py" "$repo\data\LOLdataset\our485\high\10.png"
+python "$repo\scripts\classical_demos\illumination_demo.py" "$repo\data\LOLdataset\our485\low\10.png"
+python "$repo\scripts\classical_demos\preprocessing_demo.py" "$repo\data\LOLdataset\our485\low\10.png"
+python "$repo\scripts\classical_demos\retinex_demo.py" "$repo\data\LOLdataset\our485\low\10.png"
+python "$repo\scripts\classical_demos\bad_inputs_smoke.py"
+
+Pop-Location
+```
+
+For pytest, run the actual test suites, for example:
+
+```powershell
+python -m pytest -p no:cacheprovider evaluation/tests -q
+```
+
 ## Limitations
 
 - Fixed exposure target (see failure 1); dataset-specific bias towards our485 brightness.
