@@ -1,4 +1,4 @@
-﻿# VisionForge â€” Robust Low-Light Image Restoration and Enhancement
+﻿# VisionForge - Robust Low-Light Image Restoration and Enhancement
 
 **Problem ID:** P1  
 **Team ID:** T21  
@@ -54,7 +54,7 @@ The production recommendation from the documented M3 experiments is the standalo
                           Preview / download
 ```
 
-The deployed configuration uses separate frontend and backend services. The frontend receives the backend URL through `LUMINA_DL_API_URL`. See `ARCHITECTURE.md`, `DESIGN.md`, and `SETUP.md`.
+The deployed configuration uses separate frontend and backend services. The frontend receives the backend URL through `LUMINA_DL_API_URL`. See `LUMINA_ARCHITECTURE.md`, `LUMINA_FINAL_REPORT.md`, and `LUMINA_SETUP_GUIDE.md`.
 
 ## Quickstart
 
@@ -64,7 +64,7 @@ Use Python 3.10 for the documented local environment. Python 3.11 has not been v
 git submodule update --init --recursive
 ```
 
-Create and activate an environment, install the project dependencies, install the matching OpenCV contrib headless wheel as described in `SETUP.md`, provision the official checkpoint, then start the API and Streamlit frontend in separate terminals.
+Create and activate an environment, install the project dependencies, install the matching OpenCV contrib headless wheel as described in `LUMINA_SETUP_GUIDE.md`, provision the official checkpoint, then start the API and Streamlit frontend in separate terminals.
 
 ```powershell
 python -m uvicorn deep_learning.api:app --host 127.0.0.1 --port 8000
@@ -79,7 +79,7 @@ It is not committed to the repository. Its verified SHA-256 is:
 
 `539bd16c4da6179e45616329f249c4672951b1045193428e1d042c50d4b65a0b`
 
-See `SETUP.md` for installation and checkpoint details. A fresh clone without the separately supplied checkpoint cannot run model inference.
+See `LUMINA_SETUP_GUIDE.md` for installation and checkpoint details. A fresh clone without the separately supplied checkpoint cannot run model inference.
 
 ## Evaluation
 
@@ -91,16 +91,15 @@ The M3 evaluation used a fixed 97-pair validation split from original LOL (LOL-v
 | Pretrained RetinexFormer | 21.7720 | 0.8224 | 0.1524 | 3.8765 |
 | Spatial Hybrid Intelligence | 18.1390 | 0.5885 | 0.2943 | 7.0345 |
 
-These are means from the documented eval15 run only. NIQE is a no-reference statistic, not a ground-truth fidelity measure. Latency is not restoration quality. See `EVALUATION.md` for protocol, validation results, caveats, and reproduction references.
+These are means from the documented eval15 run only. NIQE is a no-reference statistic, not a ground-truth fidelity measure. Latency is not restoration quality. See `LUMINA_EVALUATION_REPORT.md` for protocol, validation results, caveats, and reproduction references.
+- `eval_P1_T21.md` - hackathon evaluation, ablation, failure modes, and deployment report.
 
 ## Repository documentation
 
-- `ARCHITECTURE.md` â€” components and data flow.
-- `DESIGN.md` â€” design decisions and trade-offs.
-- `SETUP.md` â€” environment, checkpoint, and run instructions.
-- `EVALUATION.md` â€” datasets, metrics, benchmark results, and reproducibility.
-- `FAILURE_ANALYSIS.md` â€” limitations and failure modes.
-- `eval_P1_T21.md` â€” hackathon evaluation submission.
+- `LUMINA_ARCHITECTURE.md` - components and data flow.
+- `LUMINA_FINAL_REPORT.md` - design decisions and trade-offs.
+- `LUMINA_SETUP_GUIDE.md` - environment, checkpoint, and run instructions.
+- `LUMINA_EVALUATION_REPORT.md` - datasets, metrics, benchmark results, and reproducibility.
 
 ## Team contribution review
 

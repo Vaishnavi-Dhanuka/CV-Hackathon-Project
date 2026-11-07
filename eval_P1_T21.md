@@ -1,4 +1,4 @@
-1RUA24CSE0442, 1RUA24CSE0472, 1RUA24CSE0493, 1RUA24CSE0512
+﻿1RUA24CSE0442, 1RUA24CSE0472, 1RUA24CSE0493, 1RUA24CSE0512
 
 # P1 - Robust Low-Light Image Restoration and Enhancement
 
@@ -13,7 +13,7 @@
 | Team Members | Shreyank Balaji; Sparsha G; Tanisha Shrikant Gavali; Vaishnavi Dhanuka |
 | GitHub Repository | https://github.com/Vaishnavi-Dhanuka/CV-Hackathon-Project |
 | Evaluation Source Revision | `53873b5c79f3759449e723483b172c88ce3a9aa4` (documentation branch snapshot) |
-| Live Demo | [https://lumina-streamlit.onrender.com](https://lumina-streamlit.onrender.com) â€” Streamlit frontend; backend inference reliability is not confirmed. |
+| Live Demo | [https://lumina-streamlit.onrender.com](https://lumina-streamlit.onrender.com) Ã¢â‚¬â€ Streamlit frontend; backend inference reliability is not confirmed. |
 
 ## 1. Problem Understanding and Solution Strategy
 
@@ -72,11 +72,11 @@ Hybrid was lower than RetinexFormer by 3.6330 dB PSNR and 0.2339 SSIM, and highe
 
 NIQE is a no-reference statistic and is not a ground-truth fidelity metric. Latency is not image quality. Other separately reported experiments (69-image architecture comparison, Model A/B validation, and 100-image official test) must remain separate from these M3 results.
 
-## 4. Ablation Study
+### 3.3 Ablation Study
 
 The M3 validation compared fixed 50:50 weighted fusion, global adaptive fusion, spatial-adaptive fusion, and RetinexFormer-dominant 90:10, 95:5, and 80:20 blends. No candidate met the predeclared paired-bootstrap selection rule. The results therefore do not justify selecting fusion over standalone RetinexFormer.
 
-## 5. Failure Modes and Limitations
+## 4. Failure Modes and Limitations
 
 - Spatial Hybrid underperformed standalone RetinexFormer on the reported validation and eval15 means.
 - Heuristic fusion maps represent blend proportions, not learned attention or pixel-level correctness.
@@ -86,7 +86,7 @@ The M3 validation compared fixed 50:50 weighted fusion, global adaptive fusion, 
 - Dataset-specific results do not guarantee performance on all unseen scenes or sensors.
 - Specific image-level failure examples must be selected from actual saved outputs and attached before final submission.
 
-## 6. Deployment and Quickstart
+## 5. Deployment and Quickstart
 
 Initialize the submodule:
 
@@ -94,7 +94,7 @@ Initialize the submodule:
 git submodule update --init --recursive
 ```
 
-Provision and verify the separately distributed official checkpoint as described in `SETUP.md`.
+Provision and verify the separately distributed official checkpoint as described in `LUMINA_SETUP_GUIDE.md`.
 
 Start the API:
 
@@ -110,10 +110,10 @@ python -m streamlit run app/main.py
 
 The supplied public URL is the Streamlit frontend only. The Render Free backend exceeded its 512 MB memory limit during inference, so successful hosted model inference is not established. Do not represent the frontend URL as proof that the full application is operational.
 
-## 7. Validation and Reproducibility
+## 6. Validation and Reproducibility
 
-The recorded local test run completed with 129 passed tests, 23 warnings, and 7 subtests, along with AppTest, API, validation, and eval15 checks. These results must be rerun on the final release candidate. Use the fixed split manifest and commands documented in `EVALUATION.md`; do not tune on eval15. The frontend demo URL does not verify hosted backend inference, because the Render Free backend exceeded its 512 MB memory limit during inference.
+The recorded local test run completed with 129 passed tests, 23 warnings, and 7 subtests, along with AppTest, API, validation, and eval15 checks. These results must be rerun on the final release candidate. Use the fixed split manifest and commands documented in `LUMINA_EVALUATION_REPORT.md`; do not tune on eval15. The frontend demo URL does not verify hosted backend inference, because the Render Free backend exceeded its 512 MB memory limit during inference.
 
-## 8. Team Contributions
+## 7. Team Contributions
 
 Individual member responsibilities are not itemized here because verified per-member contribution details were not available in the reviewed source material.
