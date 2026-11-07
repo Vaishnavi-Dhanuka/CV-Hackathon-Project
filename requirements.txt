@@ -8,3 +8,4 @@ lpips>=0.1.4
 pyiqa>=0.1.16
 lmdb>=1.4
 python-multipart>=0.0.9
+matplotlib>=3.7

@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *.pyo
+*$py.class
 
 # Virtual environments
 .venv/
@@ -32,6 +33,12 @@ checkpoints/
 datasets/
 data/
 outputs/
+results/classical_outputs_*/
+results/*.zip
+
+# Temporary files
+*.log
+*.tmp
 
 # Editor and OS files
 .vscode/
