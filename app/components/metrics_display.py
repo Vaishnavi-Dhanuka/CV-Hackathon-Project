@@ -170,8 +170,7 @@ def render_metrics(
     )
     st.subheader("Evaluation metrics")
     st.caption(
-        "PSNR, SSIM, LPIPS, and edge preservation remain N/A because no clean "
-        "ground-truth reference is available for this upload."
+        "Reference-based metrics require a corresponding clean ground-truth image."
     )
     columns = st.columns(5)
     columns[0].metric("PSNR", "N/A")
@@ -185,11 +184,12 @@ def render_metrics(
 
     secondary_columns = st.columns(2)
     secondary_columns[0].metric(
-        "Noise reduction",
+        "Noise reduction (proxy)",
         f"{noise_reduction:.2f}" if noise_reduction is not None else "N/A",
         help=(
             "Signed input noise-proxy minus enhanced noise-proxy difference; "
-            "positive values indicate a lower estimated noise proxy."
+            "positive values indicate a lower estimated noise proxy. This is "
+            "not a measure of restoration quality."
         ),
     )
     secondary_columns[1].metric(
@@ -199,7 +199,13 @@ def render_metrics(
     )
 
     if niqe_error is not None:
-        st.caption(f"NIQE unavailable: {niqe_error}")
+        if niqe_error.startswith(("ImportError:", "ModuleNotFoundError:")):
+            st.caption(
+                "NIQE is currently unavailable because its evaluation "
+                "dependency is not installed."
+            )
+        else:
+            st.caption(f"NIQE unavailable: {niqe_error}")
     elif niqe is None:
         st.caption(
             "NIQE is available after an image or enhancement output is selected."
