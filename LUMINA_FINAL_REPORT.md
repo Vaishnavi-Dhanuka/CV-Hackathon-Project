@@ -72,10 +72,10 @@ The following are M3-owned files delivered or updated in this worktree:
 - `evaluation/tests/test_fusion_experiments.py`
 - `evaluation/tests/test_finalize_benchmark.py`
 - `requirements.txt`
-- `M3_SETUP_GUIDE.md`
-- `M3_ARCHITECTURE.md`
-- `M3_EVALUATION_REPORT.md`
-- `M3_FINAL_REPORT.md`
+- `LUMINA_SETUP_GUIDE.md`
+- `LUMINA_ARCHITECTURE.md`
+- `LUMINA_EVALUATION_REPORT.md`
+- `LUMINA_FINAL_REPORT.md`
 
 The generated validation and eval15 artifacts are in `evaluation/results/`.
 The fixed validation split manifest is
@@ -105,7 +105,7 @@ These are measurements from this run only. NIQE is no-reference, latency is
 not accuracy, and the results do not support claiming that Hybrid improves
 restoration quality.
 
-See [M3_EVALUATION_REPORT.md](./M3_EVALUATION_REPORT.md) for all validation
+See [LUMINA_EVALUATION_REPORT.md](./LUMINA_EVALUATION_REPORT.md) for all validation
 candidate means, eval15 color-fidelity results, relative comparisons, and
 artifact paths. The pre-existing official eval15 CSV remains unchanged.
 
@@ -150,4 +150,4 @@ environment also reports unrelated `pip check` conflicts involving
   server load.
 - Reproducing model inference requires the separately supplied official
   checkpoint and initialized RetinexFormer submodule. The setup steps are in
-  [M3_SETUP_GUIDE.md](./M3_SETUP_GUIDE.md).
+  [LUMINA_SETUP_GUIDE.md](./LUMINA_SETUP_GUIDE.md).

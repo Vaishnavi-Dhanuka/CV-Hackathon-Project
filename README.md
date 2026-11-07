@@ -143,7 +143,7 @@ datasets are optional and are not needed for the primary inference pipeline.
 The M3 FastAPI production API, Render service configuration, and Streamlit
 backend URL configuration remain in place. The deployed frontend receives
 `LUMINA_DL_API_URL` from the backend service URL; see
-[`RENDER_DEPLOYMENT.md`](./RENDER_DEPLOYMENT.md) for deployment and verification
+[`LUMINA_DEPLOYMENT.md`](./LUMINA_DEPLOYMENT.md) for deployment and verification
 details.
 
 ## 7. Inference

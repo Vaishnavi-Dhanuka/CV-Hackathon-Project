@@ -166,7 +166,7 @@ selects RetinexFormer alone, that is the recommended production output and the
 spatial fusion result remains an experimental comparison, not a claimed win.
 These paths are the completed one-shot run; select new output paths before
 starting another run. The measured validation decision and eval15 results are
-documented in [M3_EVALUATION_REPORT.md](../M3_EVALUATION_REPORT.md).
+documented in [LUMINA_EVALUATION_REPORT.md](../LUMINA_EVALUATION_REPORT.md).
 
 ## Recorded M3 results
 
