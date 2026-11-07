@@ -106,10 +106,3 @@ These are means from the documented eval15 run only. NIQE is a no-reference stat
 
 Individual contributions are not itemized in this repository because verified per-member responsibility details were not available in the reviewed source material.
 
-## Submission checklist
-
-- [ ] Verify the public URL from a fresh browser/session and test an unseen image.
-- [ ] Confirm all commands in `SETUP.md` on a clean environment.
-- [ ] Confirm architecture diagram against the final code.
-- [ ] Re-run and archive the documented evaluation before claiming reproducibility.
-
