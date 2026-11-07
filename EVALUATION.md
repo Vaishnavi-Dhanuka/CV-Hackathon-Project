@@ -1,4 +1,4 @@
-﻿# Evaluation and Reproducibility
+# Evaluation and Reproducibility
 
 ## 1. Evaluation scope
 
@@ -63,19 +63,6 @@ Do not combine these M3 results with other separately reported experiments:
 - 15-image M3 eval15.
 
 Keep dataset, split, checkpoint, and protocol labels attached to every table.
-
-## 6. Reproduction checklist
-
-- [ ] Initialize the pinned RetinexFormer submodule.
-- [ ] Provision and hash-verify the exact official checkpoint.
-- [ ] Verify dataset files and paired low-light/reference correspondence.
-- [ ] Use the fixed validation manifest and recorded seed.
-- [ ] Run validation candidate evaluation without using eval15.
-- [ ] Freeze the validation selection decision.
-- [ ] Run eval15 once with unique output paths.
-- [ ] Preserve raw per-image CSVs, aggregate summaries, error logs, charts, and generated examples.
-- [ ] Record Python/package versions, hardware, device, checkpoint hash, commands, and timestamps.
-- [ ] Re-run the final evaluation on the release candidate and compare outputs.
 
 ## 7. Artifact locations
 

@@ -1,4 +1,4 @@
-﻿1RUA24CSE0442, 1RUA24CSE0472, 1RUA24CSE0493, 1RUA24CSE0512
+1RUA24CSE0442, 1RUA24CSE0472, 1RUA24CSE0493, 1RUA24CSE0512
 
 # P1 - Robust Low-Light Image Restoration and Enhancement
 
@@ -117,15 +117,3 @@ The recorded local test run completed with 129 passed tests, 23 warnings, and 7 
 ## 8. Team Contributions
 
 Individual member responsibilities are not itemized here because verified per-member contribution details were not available in the reviewed source material.
-
-## 9. Final Student Checklist
-
-- [ ] Verified public live URL included.
-- [ ] Complete source code and pinned submodule present.
-- [ ] Architecture diagram matches final code.
-- [ ] Design document reviewed.
-- [ ] Comparative evaluation and ablation included.
-- [ ] Actual image-level failure examples attached.
-- [ ] Setup reproduced from a clean environment.
-- [ ] All four members can explain their contributions and the evaluation.
-

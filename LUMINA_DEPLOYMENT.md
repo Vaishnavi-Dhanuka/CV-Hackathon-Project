@@ -78,23 +78,6 @@ The existing frontend HTTP client timeout is 120 seconds. No Render-side
 inference timeout or latency benchmark was verified; large/slow CPU inferences
 may exceed a caller or platform request timeout.
 
-## Verification checklist
-
-- [ ] Render completes both service builds, including submodule initialization.
-- [ ] Backend logs report a verified checkpoint; its digest matches the value
-  above. Do not copy the checkpoint into Git.
-- [ ] `GET https://<backend-host>/` returns the API running message.
-- [ ] `GET https://<backend-host>/health` returns `{"status":"ok"}`.
-- [ ] `GET https://<backend-host>/docs` loads the FastAPI OpenAPI page.
-- [ ] A valid sample image sent to `POST /enhance` returns a PNG with matching
-  dimensions; invalid files return 400 and over-limit files/images return 413.
-- [ ] A failing model request in production returns a generic error, not a local
-  filesystem path or exception text.
-- [ ] The Streamlit service loads and its official RetinexFormer and Hybrid modes
-  call the deployed backend URL through `LUMINA_DL_API_URL`.
-- [ ] Measure inference latency and peak memory using representative maximum
-  size images on the selected Render plan before opening the service publicly.
-
 ## Known limitations
 
 The CPU smoke test was run locally on Windows, not on Render. It covered a
