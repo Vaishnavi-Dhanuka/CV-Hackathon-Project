@@ -9,6 +9,21 @@ from PIL import Image
 from app import main as lumina_main
 
 
+def _classical_result(image: np.ndarray, latency: float):
+    artifacts = {
+        name: image.copy()
+        for name in (
+            "illumination",
+            "reflectance",
+            "retinex",
+            "clahe",
+            "denoised",
+            "final",
+        )
+    }
+    return image, latency, artifacts, {"pipeline": "M1"}
+
+
 def test_hybrid_result_passes_both_outputs_and_original_to_fusion(monkeypatch) -> None:
     image = Image.new("RGB", (4, 3), (10, 20, 30))
     input_array = np.asarray(image).copy()
@@ -23,10 +38,10 @@ def test_hybrid_result_passes_both_outputs_and_original_to_fusion(monkeypatch) -
             "dl_weight": 0.45,
         },
     }
-    classical = Mock(return_value=(classical_array, 0.4))
+    classical = Mock(return_value=_classical_result(classical_array, 0.4))
     dl = Mock(return_value=(dl_array, 1.2))
     fusion = Mock(return_value=(fused_array, fusion_metadata))
-    monkeypatch.setattr(lumina_main, "enhance_with_classical", classical)
+    monkeypatch.setattr(lumina_main, "enhance_with_classical_artifacts", classical)
     monkeypatch.setattr(lumina_main, "enhance_with_api", dl)
     monkeypatch.setattr(lumina_main, "spatial_adaptive_fusion", fusion)
     monkeypatch.setattr(lumina_main, "calculate_niqe", Mock(return_value=4.2))
@@ -56,6 +71,8 @@ def test_hybrid_result_passes_both_outputs_and_original_to_fusion(monkeypatch) -
     assert result["classical_latency_seconds"] == 0.4
     assert result["dl_latency_seconds"] == 1.2
     assert result["hybrid_png"] is not None
+    assert result["classical_artifacts_png"] is not None
+    assert result["classical_pipeline_metadata"] == {"pipeline": "M1"}
     assert result["fusion_metadata"] is fusion_metadata
     assert result["error"] is None
 
@@ -63,7 +80,7 @@ def test_hybrid_result_passes_both_outputs_and_original_to_fusion(monkeypatch) -
 def test_hybrid_result_is_cached_by_image_content_and_mode(monkeypatch) -> None:
     image = Image.new("RGB", (4, 3))
     enhanced_array = np.zeros((3, 4, 3), dtype=np.uint8)
-    classical = Mock(return_value=(enhanced_array, 0.2))
+    classical = Mock(return_value=_classical_result(enhanced_array, 0.2))
     dl = Mock(return_value=(enhanced_array, 0.3))
     fusion = Mock(
         return_value=(
@@ -78,7 +95,7 @@ def test_hybrid_result_is_cached_by_image_content_and_mode(monkeypatch) -> None:
             },
         )
     )
-    monkeypatch.setattr(lumina_main, "enhance_with_classical", classical)
+    monkeypatch.setattr(lumina_main, "enhance_with_classical_artifacts", classical)
     monkeypatch.setattr(lumina_main, "enhance_with_api", dl)
     monkeypatch.setattr(lumina_main, "spatial_adaptive_fusion", fusion)
     monkeypatch.setattr(lumina_main, "calculate_niqe", Mock(return_value=5.0))
@@ -106,7 +123,7 @@ def test_hybrid_result_is_cached_by_image_content_and_mode(monkeypatch) -> None:
 def test_hybrid_cache_does_not_reuse_result_across_modes(monkeypatch) -> None:
     image = Image.new("RGB", (4, 3))
     enhanced_array = np.zeros((3, 4, 3), dtype=np.uint8)
-    classical = Mock(return_value=(enhanced_array, 0.2))
+    classical = Mock(return_value=_classical_result(enhanced_array, 0.2))
     dl = Mock(return_value=(enhanced_array, 0.3))
     fusion = Mock(
         return_value=(
@@ -121,7 +138,7 @@ def test_hybrid_cache_does_not_reuse_result_across_modes(monkeypatch) -> None:
             },
         )
     )
-    monkeypatch.setattr(lumina_main, "enhance_with_classical", classical)
+    monkeypatch.setattr(lumina_main, "enhance_with_classical_artifacts", classical)
     monkeypatch.setattr(lumina_main, "enhance_with_api", dl)
     monkeypatch.setattr(lumina_main, "spatial_adaptive_fusion", fusion)
     monkeypatch.setattr(lumina_main, "calculate_niqe", Mock(return_value=5.0))
@@ -154,8 +171,8 @@ def test_failed_enhancement_branch_does_not_run_fusion_or_create_result(
     enhanced_array = np.zeros((3, 4, 3), dtype=np.uint8)
     monkeypatch.setattr(
         lumina_main,
-        "enhance_with_classical",
-        Mock(return_value=(enhanced_array, 0.2)),
+        "enhance_with_classical_artifacts",
+        Mock(return_value=_classical_result(enhanced_array, 0.2)),
     )
     monkeypatch.setattr(
         lumina_main,
@@ -182,8 +199,8 @@ def test_fusion_failure_does_not_create_hybrid_result(monkeypatch) -> None:
     enhanced_array = np.zeros((3, 4, 3), dtype=np.uint8)
     monkeypatch.setattr(
         lumina_main,
-        "enhance_with_classical",
-        Mock(return_value=(enhanced_array, 0.2)),
+        "enhance_with_classical_artifacts",
+        Mock(return_value=_classical_result(enhanced_array, 0.2)),
     )
     monkeypatch.setattr(
         lumina_main,

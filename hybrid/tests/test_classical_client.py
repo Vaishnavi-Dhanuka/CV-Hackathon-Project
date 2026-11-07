@@ -7,78 +7,107 @@ import numpy as np
 import pytest
 from PIL import Image
 
-from hybrid.classical_client import enhance_with_classical
+from hybrid.classical_client import (
+    enhance_with_classical,
+    enhance_with_classical_artifacts,
+)
 
 
-def test_successful_enhancement_returns_contiguous_rgb_uint8_image() -> None:
+_ARTIFACT_NAMES = (
+    "illumination",
+    "reflectance",
+    "retinex",
+    "clahe",
+    "denoised",
+    "final",
+)
+
+
+def _pipeline_result(image: np.ndarray) -> tuple[np.ndarray, dict[str, object]]:
+    artifacts = {
+        name: np.full_like(image, index * 10)
+        for index, name in enumerate(_ARTIFACT_NAMES, start=1)
+    }
+    return artifacts["final"], {**artifacts, "meta": {"stage": "complete"}}
+
+
+def test_legacy_adapter_contract_returns_full_pipeline_final() -> None:
     input_array = np.full((3, 4, 3), (10, 20, 30), dtype=np.uint8)
     enhanced = np.full((3, 4, 3), (40, 50, 60), dtype=np.uint8)
 
-    with (
-        patch(
-            "hybrid.classical_client.prepare_image",
-            return_value=(input_array, {}),
-        ) as prepare,
-        patch(
-            "hybrid.classical_client.retinex_enhance",
-            return_value=enhanced,
-        ) as retinex,
-    ):
+    with patch(
+        "hybrid.classical_client.enhance_classical",
+        return_value=(
+            enhanced,
+            {**_pipeline_result(input_array)[1], "final": enhanced},
+        ),
+    ) as pipeline:
         result, latency = enhance_with_classical(Image.fromarray(input_array))
 
-    prepare.assert_called_once()
-    retinex.assert_called_once_with(input_array)
-    assert result.shape == (3, 4, 3)
+    pipeline.assert_called_once()
+    np.testing.assert_array_equal(pipeline.call_args.args[0], input_array)
+    np.testing.assert_array_equal(result, enhanced)
     assert result.dtype == np.uint8
     assert result.flags.c_contiguous
-    np.testing.assert_array_equal(result, enhanced)
     assert latency >= 0
 
 
-def test_input_is_converted_to_rgb_before_preprocessing() -> None:
+def test_artifact_adapter_returns_actual_pipeline_stages_and_metadata() -> None:
+    input_array = np.full((3, 4, 3), (10, 20, 30), dtype=np.uint8)
+    final, intermediate = _pipeline_result(input_array)
+
+    with patch(
+        "hybrid.classical_client.enhance_classical",
+        return_value=(final, intermediate),
+    ) as pipeline:
+        result, latency, artifacts, metadata = enhance_with_classical_artifacts(
+            Image.fromarray(input_array)
+        )
+
+    pipeline.assert_called_once()
+    np.testing.assert_array_equal(result, final)
+    assert set(artifacts) == set(_ARTIFACT_NAMES)
+    for name in _ARTIFACT_NAMES:
+        np.testing.assert_array_equal(artifacts[name], intermediate[name])
+    assert metadata == {"stage": "complete"}
+    assert latency >= 0
+
+
+def test_input_is_converted_to_rgb_before_full_pipeline() -> None:
     rgba_image = Image.new("RGBA", (4, 3), (10, 20, 30, 40))
     expected_rgb = np.full((3, 4, 3), (10, 20, 30), dtype=np.uint8)
+    final, intermediate = _pipeline_result(expected_rgb)
 
-    with (
-        patch(
-            "hybrid.classical_client.prepare_image",
-            return_value=(expected_rgb, {}),
-        ) as prepare,
-        patch(
-            "hybrid.classical_client.retinex_enhance",
-            return_value=expected_rgb,
-        ),
-    ):
-        enhance_with_classical(rgba_image)
+    with patch(
+        "hybrid.classical_client.enhance_classical",
+        return_value=(final, intermediate),
+    ) as pipeline:
+        enhance_with_classical_artifacts(rgba_image)
 
-    np.testing.assert_array_equal(prepare.call_args.args[0], expected_rgb)
-    assert prepare.call_args.args[0].dtype == np.uint8
+    np.testing.assert_array_equal(pipeline.call_args.args[0], expected_rgb)
+    assert pipeline.call_args.args[0].dtype == np.uint8
 
 
-def test_downsized_enhancement_is_resized_to_original_size() -> None:
+def test_downsized_pipeline_images_are_resized_to_original_size() -> None:
     original = Image.new("RGB", (8, 6), (10, 20, 30))
-    prepared = np.full((3, 4, 3), (10, 20, 30), dtype=np.uint8)
-    enhanced = np.full((3, 4, 3), (70, 80, 90), dtype=np.uint8)
+    small = np.full((3, 4, 3), 70, dtype=np.uint8)
+    final, intermediate = _pipeline_result(small)
 
-    with (
-        patch(
-            "hybrid.classical_client.prepare_image",
-            return_value=(prepared, {"scale": 0.5}),
-        ),
-        patch(
-            "hybrid.classical_client.retinex_enhance",
-            return_value=enhanced,
-        ),
+    with patch(
+        "hybrid.classical_client.enhance_classical",
+        return_value=(final, intermediate),
     ):
-        result, _ = enhance_with_classical(original)
+        result, _, artifacts, _ = enhance_with_classical_artifacts(original)
 
-    assert result.shape == (6, 8, 3)
-    assert result.dtype == np.uint8
-    assert result.flags.c_contiguous
-    np.testing.assert_array_equal(
-        result,
-        cv2.resize(enhanced, (8, 6), interpolation=cv2.INTER_LINEAR),
-    )
+    expected = cv2.resize(final, (8, 6), interpolation=cv2.INTER_LINEAR)
+    np.testing.assert_array_equal(result, expected)
+    for name, artifact in artifacts.items():
+        expected_artifact = cv2.resize(
+            intermediate[name],
+            (8, 6),
+            interpolation=cv2.INTER_LINEAR,
+        )
+        np.testing.assert_array_equal(artifact, expected_artifact)
 
 
 @pytest.mark.parametrize(
@@ -96,28 +125,26 @@ def test_invalid_inputs_are_rejected(
         enhance_with_classical(image)  # type: ignore[arg-type]
 
 
-@pytest.mark.parametrize("error", [ValueError("invalid input"), TypeError("bad type")])
-def test_preprocessing_errors_are_propagated(error: Exception) -> None:
+@pytest.mark.parametrize(
+    "error", [ValueError("pipeline failed"), TypeError("bad input")]
+)
+def test_pipeline_errors_are_propagated(error: Exception) -> None:
     with patch(
-        "hybrid.classical_client.prepare_image",
+        "hybrid.classical_client.enhance_classical",
         side_effect=error,
     ):
         with pytest.raises(type(error), match=str(error)):
             enhance_with_classical(Image.new("RGB", (4, 3)))
 
 
-@pytest.mark.parametrize("error", [ValueError("enhancement failed"), TypeError("bad data")])
-def test_retinex_errors_are_propagated(error: Exception) -> None:
-    prepared = np.zeros((3, 4, 3), dtype=np.uint8)
-    with (
-        patch(
-            "hybrid.classical_client.prepare_image",
-            return_value=(prepared, {}),
-        ),
-        patch(
-            "hybrid.classical_client.retinex_enhance",
-            side_effect=error,
-        ),
+def test_invalid_pipeline_stage_is_rejected() -> None:
+    image = Image.new("RGB", (4, 3))
+    final, intermediate = _pipeline_result(np.asarray(image))
+    intermediate["retinex"] = np.zeros((3, 4), dtype=np.uint8)
+
+    with patch(
+        "hybrid.classical_client.enhance_classical",
+        return_value=(final, intermediate),
     ):
-        with pytest.raises(type(error), match=str(error)):
-            enhance_with_classical(Image.new("RGB", (4, 3)))
+        with pytest.raises(ValueError, match="HxWx3 RGB"):
+            enhance_with_classical_artifacts(image)

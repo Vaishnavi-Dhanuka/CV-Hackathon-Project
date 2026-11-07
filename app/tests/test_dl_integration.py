@@ -10,6 +10,14 @@ from PIL import Image
 from app import main as lumina_main
 
 
+def _classical_result(image: np.ndarray, latency: float):
+    artifacts = {
+        name: image.copy()
+        for name in ("illumination", "reflectance", "retinex", "clahe", "denoised", "final")
+    }
+    return image, latency, artifacts, {"pipeline": "M1"}
+
+
 def test_deep_learning_result_is_cached_by_image_and_mode(monkeypatch) -> None:
     image = Image.new("RGB", (4, 3), (10, 20, 30))
     uploaded_bytes = b"same uploaded image"
@@ -103,10 +111,10 @@ def test_api_connection_error_is_cached_with_actionable_message(monkeypatch) -> 
 def test_classical_result_is_cached_and_computes_metrics(monkeypatch) -> None:
     image = Image.new("RGB", (4, 3), (10, 20, 30))
     enhanced_array = np.full((3, 4, 3), 90, dtype=np.uint8)
-    enhance = Mock(return_value=(enhanced_array, 0.25))
+    enhance = Mock(return_value=_classical_result(enhanced_array, 0.25))
     niqe = Mock(return_value=4.0)
     noise = Mock(return_value=2.0)
-    monkeypatch.setattr(lumina_main, "enhance_with_classical", enhance)
+    monkeypatch.setattr(lumina_main, "enhance_with_classical_artifacts", enhance)
     monkeypatch.setattr(lumina_main, "calculate_niqe", niqe)
     monkeypatch.setattr(lumina_main, "calculate_noise_reduction", noise)
     monkeypatch.setattr(lumina_main.st, "spinner", lambda _: nullcontext())
@@ -126,6 +134,14 @@ def test_classical_result_is_cached_and_computes_metrics(monkeypatch) -> None:
     assert first["latency_seconds"] == 0.25
     assert first["niqe"] == 4.0
     assert first["noise_reduction"] == 2.0
+    assert first["pipeline_metadata"] == {"pipeline": "M1"}
+    assert set(first["artifacts_png"]) == {
+        "illumination",
+        "reflectance",
+        "retinex",
+        "clahe",
+        "denoised",
+    }
     with Image.open(BytesIO(first["enhanced_png"])) as output:
         assert output.mode == "RGB"
         assert output.size == image.size
@@ -136,7 +152,7 @@ def test_switching_to_hybrid_reuses_cached_classical_and_dl_branches(monkeypatch
     uploaded_bytes = b"switch between modes"
     classical_output = np.full((3, 4, 3), 50, dtype=np.uint8)
     dl_output = np.full((3, 4, 3), 90, dtype=np.uint8)
-    classical = Mock(return_value=(classical_output, 0.2))
+    classical = Mock(return_value=_classical_result(classical_output, 0.2))
     dl = Mock(return_value=(dl_output, 0.3))
     fusion = Mock(
         return_value=(
@@ -151,7 +167,7 @@ def test_switching_to_hybrid_reuses_cached_classical_and_dl_branches(monkeypatch
             },
         )
     )
-    monkeypatch.setattr(lumina_main, "enhance_with_classical", classical)
+    monkeypatch.setattr(lumina_main, "enhance_with_classical_artifacts", classical)
     monkeypatch.setattr(lumina_main, "enhance_with_api", dl)
     monkeypatch.setattr(lumina_main, "spatial_adaptive_fusion", fusion)
     monkeypatch.setattr(lumina_main, "calculate_niqe", Mock(return_value=5.0))

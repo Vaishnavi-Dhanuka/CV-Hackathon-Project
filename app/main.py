@@ -21,7 +21,7 @@ from app.components.sidebar import render_sidebar
 from app.utils.image_utils import load_and_analyze_image
 from evaluation.analysis_metrics import calculate_noise_reduction
 from evaluation.metrics import calculate_niqe
-from hybrid.classical_client import enhance_with_classical
+from hybrid.classical_client import enhance_with_classical_artifacts
 from hybrid.dl_client import API_BASE_URL, enhance_with_api
 from hybrid.fusion import spatial_adaptive_fusion
 
@@ -47,6 +47,8 @@ class _ClassicalResult(TypedDict):
 
     key: str
     enhanced_png: bytes | None
+    artifacts_png: dict[str, bytes] | None
+    pipeline_metadata: dict[str, Any] | None
     latency_seconds: float | None
     niqe: float | None
     niqe_error: str | None
@@ -60,6 +62,8 @@ class _HybridResult(TypedDict):
 
     key: str
     classical_png: bytes | None
+    classical_artifacts_png: dict[str, bytes] | None
+    classical_pipeline_metadata: dict[str, Any] | None
     dl_png: bytes | None
     hybrid_png: bytes | None
     fusion_metadata: dict[str, object] | None
@@ -584,7 +588,32 @@ def main() -> None:
         latency_seconds=total_latency,
         latency_label=latency_label,
     )
-    render_intermediate_visualizations()
+    artifact_pngs = (
+        classical_result["artifacts_png"]
+        if classical_result is not None
+        else hybrid_result["classical_artifacts_png"]
+        if hybrid_result is not None
+        else None
+    )
+    render_intermediate_visualizations(
+        selected_mode=selected_mode,
+        classical_image=classical_image,
+        classical_artifacts=_decode_png_artifacts(artifact_pngs),
+        classical_metadata=(
+            classical_result["pipeline_metadata"]
+            if classical_result is not None
+            else hybrid_result["classical_pipeline_metadata"]
+            if hybrid_result is not None
+            else None
+        ),
+        deep_learning_image=deep_learning_image,
+        hybrid_image=hybrid_image,
+        fusion_metadata=(
+            hybrid_result["fusion_metadata"]
+            if hybrid_result is not None
+            else None
+        ),
+    )
     _render_download()
 
 
@@ -627,6 +656,28 @@ def _cached_branch_result(
     return None
 
 
+def _cached_classical_artifacts(
+    cache: dict[str, Any],
+    image_digest: str,
+) -> tuple[dict[str, bytes] | None, dict[str, Any] | None]:
+    """Find actual M1 stage images and metadata for a same-image branch."""
+    for cache_key, cached in reversed(tuple(cache.items())):
+        if not cache_key.endswith(f":{image_digest}") or not isinstance(cached, dict):
+            continue
+        mode = cached.get("key", "").split(":", maxsplit=1)[0]
+        if "classical_png" in cached:
+            artifacts = cached.get("classical_artifacts_png")
+            metadata = cached.get("classical_pipeline_metadata")
+        elif mode == "Classical CV":
+            artifacts = cached.get("artifacts_png")
+            metadata = cached.get("pipeline_metadata")
+        else:
+            continue
+        if isinstance(artifacts, dict):
+            return artifacts, metadata if isinstance(metadata, dict) else None
+    return None, None
+
+
 def _clear_image_cache(
     session_state: MutableMapping[str, Any],
     uploaded_bytes: bytes,
@@ -665,12 +716,15 @@ def _get_classical_result(
         cache = {}
         session_state[_DL_CACHE_KEY] = cache
     cached = cache.get(cache_key)
-    if isinstance(cached, dict):
+    if isinstance(cached, dict) and "artifacts_png" in cached:
         return cached
+    cache.pop(cache_key, None)
 
     result: _ClassicalResult = {
         "key": cache_key,
         "enhanced_png": None,
+        "artifacts_png": None,
+        "pipeline_metadata": None,
         "latency_seconds": None,
         "niqe": None,
         "niqe_error": None,
@@ -679,10 +733,13 @@ def _get_classical_result(
         "error": None,
     }
     branch = _cached_branch_result(cache, digest, "classical")
+    artifacts_png, pipeline_metadata = _cached_classical_artifacts(cache, digest)
     try:
-        if branch is not None:
+        if branch is not None and artifacts_png is not None:
             png, latency, error_message = branch
             result["enhanced_png"] = png
+            result["artifacts_png"] = artifacts_png
+            result["pipeline_metadata"] = pipeline_metadata
             result["latency_seconds"] = latency
             result["error"] = error_message
             if png is None:
@@ -690,9 +747,16 @@ def _get_classical_result(
             enhanced_array = np.asarray(_decode_png(png), dtype=np.uint8)
         else:
             with st.spinner("Enhancing image with Classical CV..."):
-                enhanced_array, latency_seconds = enhance_with_classical(image)
+                (
+                    enhanced_array,
+                    latency_seconds,
+                    artifacts,
+                    pipeline_metadata,
+                ) = enhance_with_classical_artifacts(image)
             result["latency_seconds"] = latency_seconds
             result["enhanced_png"] = _encode_png(enhanced_array)
+            result["artifacts_png"] = _encode_png_artifacts(artifacts)
+            result["pipeline_metadata"] = pipeline_metadata
 
         input_array = np.asarray(image.convert("RGB"), dtype=np.uint8)
         try:
@@ -809,12 +873,15 @@ def _get_hybrid_result(
         cache = {}
         session_state[_DL_CACHE_KEY] = cache
     cached = cache.get(cache_key)
-    if isinstance(cached, dict):
+    if isinstance(cached, dict) and "classical_artifacts_png" in cached:
         return cached
+    cache.pop(cache_key, None)
 
     result: _HybridResult = {
         "key": cache_key,
         "classical_png": None,
+        "classical_artifacts_png": None,
+        "classical_pipeline_metadata": None,
         "dl_png": None,
         "hybrid_png": None,
         "fusion_metadata": None,
@@ -833,9 +900,14 @@ def _get_hybrid_result(
     dl_array: np.ndarray | None = None
     with st.spinner("Running Classical CV and Deep Learning enhancement..."):
         cached_classical = _cached_branch_result(cache, digest, "classical")
-        if cached_classical is not None:
+        classical_artifacts_png, classical_pipeline_metadata = (
+            _cached_classical_artifacts(cache, digest)
+        )
+        if cached_classical is not None and classical_artifacts_png is not None:
             png, result["classical_latency_seconds"], error_message = cached_classical
             result["classical_png"] = png
+            result["classical_artifacts_png"] = classical_artifacts_png
+            result["classical_pipeline_metadata"] = classical_pipeline_metadata
             result["classical_error"] = error_message
             if png is not None:
                 try:
@@ -846,10 +918,16 @@ def _get_hybrid_result(
                     )
         else:
             try:
-                classical_array, result["classical_latency_seconds"] = (
-                    enhance_with_classical(image)
-                )
+                (
+                    classical_array,
+                    result["classical_latency_seconds"],
+                    classical_artifacts,
+                    result["classical_pipeline_metadata"],
+                ) = enhance_with_classical_artifacts(image)
                 result["classical_png"] = _encode_png(classical_array)
+                result["classical_artifacts_png"] = _encode_png_artifacts(
+                    classical_artifacts
+                )
             except Exception as error:
                 result["classical_error"] = (
                     f"Classical CV enhancement failed: {type(error).__name__}: {error}"
@@ -968,6 +1046,28 @@ def _encode_png(image: np.ndarray) -> bytes:
     output = BytesIO()
     Image.fromarray(image).convert("RGB").save(output, format="PNG")
     return output.getvalue()
+
+
+def _encode_png_artifacts(artifacts: dict[str, np.ndarray]) -> dict[str, bytes]:
+    """Encode actual M1 stage images for safe session-state caching."""
+    return {
+        name: _encode_png(image)
+        for name, image in artifacts.items()
+        if name != "final"
+    }
+
+
+def _decode_png_artifacts(
+    artifacts: dict[str, bytes] | None,
+) -> dict[str, Image.Image] | None:
+    """Decode cached M1 stage images as independent RGB Pillow images."""
+    if artifacts is None:
+        return None
+    return {
+        name: image
+        for name, png in artifacts.items()
+        if (image := _decode_png(png)) is not None
+    }
 
 
 def _render_download() -> None:
