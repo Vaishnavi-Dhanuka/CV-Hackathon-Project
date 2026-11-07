@@ -12,7 +12,7 @@
 | Team Name | VisionForge |
 | Team Members | Shreyank Balaji; Sparsha G; Tanisha Shrikant Gavali; Vaishnavi Dhanuka |
 | GitHub Repository | https://github.com/Vaishnavi-Dhanuka/CV-Hackathon-Project |
-| Live Demo | [ADD PUBLIC DEPLOYMENT URL] |
+| Live Demo | https://lumina-streamlit.onrender.com |
 
 ### Team Members
 
@@ -132,9 +132,9 @@ PSNR, SSIM, LPIPS and CIEDE2000 use paired reference images. NIQE is treated as 
 
 A held-out evaluation was conducted on 15 images using the final evaluation run. It produced 45 method-result rows across the three approaches, with no recorded evaluation failures.
 
-### Held-out Results Ã¢â‚¬â€ 15 Images
+### Held-out Results ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â 15 Images
 
-| Method | PSNR Ã¢â€ â€˜ | SSIM Ã¢â€ â€˜ | LPIPS Ã¢â€ â€œ | NIQE Ã¢â€ â€œ | CIEDE2000 Ã¢â€ â€œ | Inference Latency (ms) |
+| Method | PSNR ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Ëœ | SSIM ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Ëœ | LPIPS ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Å“ | NIQE ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Å“ | CIEDE2000 ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Å“ | Inference Latency (ms) |
 |---|---:|---:|---:|---:|---:|---:|
 | Classical CV | 16.3686 | 0.5048 | 0.3590 | 7.9804 | 16.2439 | 88.37 |
 | Pretrained RetinexFormer | **21.7720** | **0.8224** | **0.1524** | **3.8765** | **8.9765** | 1960.97 |
@@ -167,7 +167,7 @@ The predefined selection rule required positive paired-bootstrap 95% confidence 
 | DL-Dominant 90:10 | 21.8293 | 0.8286 | 0.1743 | 12.51 |
 | DL-Dominant 95:5 | 21.9894 | 0.8399 | 0.1671 | 12.57 |
 | DL-Dominant 80:20 | 21.4234 | 0.7932 | 0.1983 | 13.04 |
-| Standalone RetinexFormer | **22.1058** | **0.8451** | **0.1645** | Ã¢â‚¬â€ |
+| Standalone RetinexFormer | **22.1058** | **0.8451** | **0.1645** | ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â |
 
 No fusion candidate satisfied the complete predefined selection rule.
 
@@ -242,7 +242,7 @@ The Streamlit application communicates with the API using the configured `LUMINA
 
 ## 5.5 Live Deployment
 
-**Public application URL:** [ADD DEPLOYMENT URL WHEN AVAILABLE]
+**Public application URL:** https://lumina-streamlit.onrender.com
 
 Confirm the deployment status and public URL before final submission.
 

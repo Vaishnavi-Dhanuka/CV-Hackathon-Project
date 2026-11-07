@@ -104,3 +104,17 @@ on the first inference request, so that request may be slower than subsequent
 ones. The 10-MiB/4-MP limits are conservative deployment safeguards, not
 validated quality or capacity thresholds. Streamlit calls the API server-side,
 so browser CORS configuration is not required.
+
+## Render Free Backend Memory Limitation
+
+The Render Free backend exceeded its 512 MB memory limit during model
+inference. Therefore, the Free backend deployment must not be considered
+stable or production-ready. Inference requests may fail when the service
+runs out of memory. A hosting plan or environment with sufficient memory
+is required for reliable model inference.
+
+The public Streamlit frontend is available at:
+https://lumina-streamlit.onrender.com
+
+The frontend being accessible does not guarantee that backend inference
+is operational.
