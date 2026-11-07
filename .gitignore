@@ -35,6 +35,7 @@ data/
 outputs/
 results/classical_outputs_*/
 results/*.zip
+tb_logger/
 
 # Temporary files
 *.log
@@ -45,3 +46,8 @@ results/*.zip
 .idea/
 .DS_Store
 Thumbs.db
+
+# Local research datasets and comparison repositories
+third_party/ExDark/
+third_party/Zero-DCE-PlusPlus/
+third_party/multinex/

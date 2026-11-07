@@ -1,0 +1,98 @@
+
+name: RetinexFormer_Model_B
+model_type: ImageCleanModel
+scale: 1
+num_gpu: 1
+manual_seed: 42
+
+datasets:
+  train:
+    name: ModelB_Train
+    type: Dataset_PairedImage
+    dataroot_gt: data/model_datasets/Model_B/Train/Normal
+    dataroot_lq: data/model_datasets/Model_B/Train/Low
+    geometric_augs: true
+    filename_tmpl: '{}'
+    io_backend:
+      type: disk
+    use_shuffle: true
+    num_worker_per_gpu: 0
+    batch_size_per_gpu: 1
+    mini_batch_sizes: [1]
+    iters: [1000]
+    gt_size: 256
+    gt_sizes: [256]
+    dataset_enlarge_ratio: 1
+    prefetch_mode: ~
+
+  val:
+    name: ModelB_Validation
+    type: Dataset_PairedImage
+    dataroot_gt: data/model_datasets/Model_B/Val/Normal
+    dataroot_lq: data/model_datasets/Model_B/Val/Low
+    io_backend:
+      type: disk
+
+network_g:
+  type: RetinexFormer
+  in_channels: 3
+  out_channels: 3
+  n_feat: 40
+  stage: 1
+  num_blocks: [1, 2, 2]
+
+path:
+  pretrain_network_g: results/checkpoints/official_only/retinexformer_official_baseline.pth
+  strict_load_g: true
+  resume_state: ~
+
+train:
+  total_iter: 1000
+  warmup_iter: 50
+  use_grad_clip: true
+
+  scheduler:
+    type: CosineAnnealingRestartCyclicLR
+    periods: [1000]
+    restart_weights: [1]
+    eta_mins: [0.0000001]
+
+  mixing_augs:
+    mixup: false
+    mixup_beta: 1.2
+    use_identity: true
+
+  optim_g:
+    type: Adam
+    lr: !!float 1e-6
+    betas: [0.9, 0.999]
+
+  pixel_opt:
+    type: L1Loss
+    loss_weight: 1
+    reduction: mean
+
+val:
+  window_size: 4
+  val_freq: 250
+  save_img: false
+  rgb2bgr: false
+  use_image: false
+  max_minibatch: 1
+  metrics:
+    psnr:
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+
+logger:
+  print_freq: 50
+  save_checkpoint_freq: 250
+  use_tb_logger: true
+  wandb:
+    project: low_light_model_B
+    resume_id: ~
+
+dist_params:
+  backend: nccl
+  port: 29500
