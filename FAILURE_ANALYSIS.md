@@ -48,16 +48,7 @@ A fresh clone does not include the production checkpoint or datasets. A successf
 
 Enhancement can change the appearance of an image and may create or suppress visual details. Enhanced output should not be represented as a faithful recovery of information that was never captured. Avoid using enhanced imagery as sole evidence in safety-critical, forensic, medical, or legal contexts.
 
-## 9. Failure-case evidence to attach before final submission
 
-The current project summaries do not identify specific named image-level failure cases or their exact file paths. The team must select and verify examples from its saved outputs before claiming specific visual failure patterns.
+## 9. Image-level failure evidence
 
-Add at least:
-- [ ] One image where RetinexFormer fails or produces an undesirable artifact.
-- [ ] One image where classical CV fails or produces an undesirable artifact.
-- [ ] One image where hybrid fusion worsens the result relative to RetinexFormer.
-- [ ] The corresponding input, output, reference (if available), and metric row.
-- [ ] A short explanation of the cause, impact, and possible mitigation.
-
-Do not fabricate examples or attribute causes that have not been inspected.
-
+The reviewed project summaries do not identify specific named image-level failure cases or their exact file paths. Therefore, this report limits its failure analysis to the documented aggregate evaluation results and known system limitations. It does not claim image-specific failure examples or unverified causes.

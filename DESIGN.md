@@ -60,5 +60,3 @@ After the validation decision was frozen, a one-shot eval15 comparison was run o
 - NIQE does not use paired ground truth and should not be interpreted as a direct fidelity score.
 - Latency depends on hardware and service load.
 - The local smoke tests do not establish Render deployment reliability.
-- Team member-specific contributions must be confirmed by the team before submission.
-
