@@ -961,5 +961,4 @@ def render_immersive_experience() -> None:
         _EXPERIENCE_HTML,
         height=1600,
         scrolling=False,
-        tab_index=0,
     )
