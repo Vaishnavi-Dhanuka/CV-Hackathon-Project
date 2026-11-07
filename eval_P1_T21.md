@@ -1,4 +1,4 @@
-1RUA24CSE0442, 1RUA24CSE0472, 1RUA24CSE0493, 1RUA24CSE0512
+﻿1RUA24CSE0442, 1RUA24CSE0472, 1RUA24CSE0493, 1RUA24CSE0512
 
 # P1 - Robust Low-Light Image Restoration and Enhancement
 
@@ -12,250 +12,120 @@
 | Team Name | VisionForge |
 | Team Members | Shreyank Balaji; Sparsha G; Tanisha Shrikant Gavali; Vaishnavi Dhanuka |
 | GitHub Repository | https://github.com/Vaishnavi-Dhanuka/CV-Hackathon-Project |
-| Live Demo | https://lumina-streamlit.onrender.com |
+| Evaluation Source Revision | `53873b5c79f3759449e723483b172c88ce3a9aa4` (documentation branch snapshot) |
+| Live Demo | [https://lumina-streamlit.onrender.com](https://lumina-streamlit.onrender.com) â€” Streamlit frontend; backend inference reliability is not confirmed. |
 
-### Team Members
+## 1. Problem Understanding and Solution Strategy
 
-| USN | Full Name |
-|---|---|
-| 1RUA24CSE0442 | Shreyank Balaji |
-| 1RUA24CSE0472 | Sparsha G |
-| 1RUA24CSE0493 | Tanisha Shrikant Gavali |
-| 1RUA24CSE0512 | Vaishnavi Dhanuka |
+Low-light images can suffer from poor visibility, noise, colour distortion, and loss of detail. The project provides a comparison-oriented enhancement system with a classical computer-vision path, an official pretrained RetinexFormer path, and an experimental hybrid fusion path.
 
----
+The documented M3 evaluation selected standalone pretrained RetinexFormer as the production recommendation. The current spatial-adaptive hybrid remains experimental because it did not meet the validation selection rule and underperformed RetinexFormer on the reported eval15 comparison.
 
-# 1. Problem Understanding and Solution Strategy
+## 2. Technical Architecture and Implementation
 
-## 1.1 Problem Understanding
+### 2.1 Classical baseline
 
-The problem requires an intelligent illumination-adaptive system capable of enhancing severely underexposed, noisy and colour-distorted images while preserving fine textures, edges and structural information. The solution must estimate and improve illumination, suppress noise, preserve colour fidelity and recover structural details without excessive overexposure, halos or unnatural colours.
+The classical adapter calls the M1 `prepare_image()` and guided `retinex_enhance()` functions. It returns an RGB `uint8` image, restores original dimensions when required, and reports branch latency.
 
-The project addresses the three required approaches: classical computer vision, deep-learning-based restoration, and hybrid intelligence combining classical and deep-learning outputs.
+### 2.2 Deep-learning method
 
-## 1.2 Proposed Solution
+The FastAPI `/enhance` endpoint accepts an image upload and delegates to `deep_learning/retinex_inference.py`. The inference path uses the official RetinexFormer implementation and LOLv2-real configuration, strictly loads the `params` state dictionary, caches the model, pads dimensions as required, and returns an RGB image at the original dimensions.
 
-The project implements **LUMINA**, a low-light image restoration application with a Streamlit interface and a FastAPI-based deep-learning inference service.
+The production checkpoint is `results/checkpoints/official_only/retinexformer_official_baseline.pth`, separately provisioned and verified by SHA-256 `539bd16c4da6179e45616329f249c4672951b1045193428e1d042c50d4b65a0b`.
 
-The application provides Original Image, Classical CV, Official RetinexFormer, Deep Learning and Hybrid Intelligence options. The Deep Learning interface option is routed through the RetinexFormer API. The classical branch uses M1 preprocessing and guided Retinex enhancement. The deep-learning branch uses the official pretrained RetinexFormer model. The hybrid branch runs both enhancement paths and combines their outputs using spatially adaptive fusion.
+### 2.3 Hybrid method
 
-Fusion was evaluated against standalone RetinexFormer. Since experiments did not establish reliable quality improvements from fusion, standalone RetinexFormer is the recommended production method.
+The hybrid branch obtains classical and deep-learning outputs and combines them using spatial-adaptive heuristic weights. The maps describe blend proportions; they are not learned attention or estimates of output correctness. The evaluation results do not support claiming a quality improvement over RetinexFormer.
 
----
+### 2.4 Frontend and API
 
-# 2. Technical Architecture and Implementation
+The LUMINA Streamlit frontend offers image preview, pipeline selection, comparison, metrics, explainability visualizations, and PNG download. The FastAPI service provides `/`, `/health`, and `/enhance` endpoints. Local and hosted frontend/backend communication is configured through `LUMINA_DL_API_URL`.
 
-## 2.1 System Architecture
+## 3. Experimental Benchmarks and Evaluation
 
-The system consists of:
-- **Frontend:** Streamlit application for image upload, enhancement selection, visual comparison, metrics and PNG download.
-- **Classical enhancement:** M1 preprocessing and guided Retinex enhancement.
-- **Deep-learning inference:** FastAPI service serving the pretrained RetinexFormer model.
-- **Hybrid fusion:** Spatially adaptive fusion of classical and deep-learning outputs.
-- **Evaluation:** Paired-reference metrics, no-reference quality metrics, latency measurements and fusion ablation experiments.
+### 3.1 M3 seeded validation
 
-### Processing Flow
+The fixed seed-2026 split used 97 paired validation images from original LOL (LOL-v1) `our485` (388 training names). No fusion candidate met the predeclared paired-bootstrap criteria. Pretrained RetinexFormer was selected as the recommended production method.
 
-```text
-                User uploads image
-                       |
-                       v
-              Streamlit Application
-                       |
-          +------------+-------------+
-          |            |             |
-          v            v             v
-      Classical     RetinexFormer   Hybrid Mode
-       Branch        API Branch        |
-          |            |          +----+----+
-          |            |          |         |
-          |            |          v         v
-          |            |      Classical  RetinexFormer
-          |            |      Output      Output
-          |            |          |         |
-          |            |          +----+----+
-          |            |               |
-          |            |               v
-          |            |       Spatial Adaptive Fusion
-          |            |               |
-          +------------+---------------+
-                       |
-                       v
-             Enhanced Image and Evaluation
-                       |
-                       v
-             Comparison and PNG Download
-```
-
-## 2.2 Classical Computer Vision
-
-The classical branch uses M1 preprocessing followed by guided Retinex enhancement. It aims to improve illumination and local contrast while retaining image structure. The implementation includes image preprocessing, Retinex-based enhancement, guided filtering-based processing, and output validation/resizing where necessary.
-
-## 2.3 Deep Learning
-
-The deep-learning branch uses the official pretrained **RetinexFormer** architecture. The inference service loads the official configuration and selected checkpoint, processes uploaded RGB images, handles image dimensions through padding and cropping, and returns enhanced RGB images in PNG format.
-
-The API is implemented using FastAPI.
-
-| Endpoint | Purpose |
-|---|---|
-| GET `/` | API running information |
-| GET `/health` | Checks model configuration and checkpoint availability |
-| POST `/enhance` | Receives an image and returns the enhanced PNG |
-
-Primary inference checkpoint:
-
-`results/checkpoints/official_only/retinexformer_official_baseline.pth`
-
-## 2.4 Hybrid Intelligence and Adaptive Fusion
-
-The hybrid pipeline executes the classical and deep-learning branches and combines their outputs. Spatial-adaptive fusion uses image luminance information to construct a spatially varying contribution map. It computes a global baseline contribution, estimates local illumination, adjusts the classical contribution according to local illumination, smooths the contribution map, constrains fusion weights, and uses complementary classical and deep-learning weight maps.
-
-The fusion method is heuristic and deterministic. It is not a learned attention mechanism and does not directly measure which output has better restoration quality at each pixel. The experiments showed that the tested fusion strategies did not reliably improve restoration quality over standalone RetinexFormer.
-
-## 2.5 Evaluation Metrics
-
-- **PSNR:** Pixel-level reconstruction quality.
-- **SSIM:** Structural similarity.
-- **LPIPS:** Perceptual similarity.
-- **NIQE:** No-reference image-quality indicator.
-- **CIEDE2000:** Colour difference.
-- **Latency:** Processing time in milliseconds.
-
-PSNR, SSIM, LPIPS and CIEDE2000 use paired reference images. NIQE is treated as a descriptive no-reference metric.
-
----
-
-# 3. Experimental Benchmarks and Evaluation
-
-## 3.1 Held-out Evaluation
-
-A held-out evaluation was conducted on 15 images using the final evaluation run. It produced 45 method-result rows across the three approaches, with no recorded evaluation failures.
-
-### Held-out Results ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â 15 Images
-
-| Method | PSNR ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Ëœ | SSIM ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Ëœ | LPIPS ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Å“ | NIQE ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Å“ | CIEDE2000 ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Å“ | Inference Latency (ms) |
-|---|---:|---:|---:|---:|---:|---:|
-| Classical CV | 16.3686 | 0.5048 | 0.3590 | 7.9804 | 16.2439 | 88.37 |
-| Pretrained RetinexFormer | **21.7720** | **0.8224** | **0.1524** | **3.8765** | **8.9765** | 1960.97 |
-| Hybrid Spatial-Adaptive | 18.1390 | 0.5885 | 0.2943 | 7.0345 | 13.7454 | 2395.17 |
-
-*Arrows indicate the preferred direction of each metric. Latency is reported in milliseconds. Hybrid latency includes the sequential classical and deep-learning branches; fusion latency is measured separately.*
-
-Standalone RetinexFormer achieved the best held-out PSNR, SSIM, LPIPS, NIQE and CIEDE2000 values among the three approaches.
-
-Compared with standalone RetinexFormer, the hybrid method showed:
-- PSNR difference: -3.6330 dB.
-- SSIM difference: -0.2339.
-- LPIPS difference: +0.1419.
-- NIQE difference: +3.1580.
-- CIEDE2000 difference: +4.7690.
-
-The hybrid approach did not outperform standalone RetinexFormer on this held-out evaluation. This result informed the final production recommendation.
-
-## 3.2 Validation and Model Selection
-
-A fixed validation protocol was conducted using 97 paired images with validation seed 2026.
-
-The predefined selection rule required positive paired-bootstrap 95% confidence interval lower bounds for PSNR, SSIM and improvement in negative LPIPS, plus mean NIQE and mean CIEDE2000 no worse than standalone RetinexFormer.
-
-| Strategy | PSNR | SSIM | LPIPS | Mean Fusion Latency (ms) |
+| Method | PSNR | SSIM | LPIPS | NIQE |
 |---|---:|---:|---:|---:|
-| Weighted 50:50 | 19.8884 | 0.6646 | 0.2922 | 11.73 |
-| Adaptive Fusion | 18.8833 | 0.5983 | 0.3457 | 18.15 |
-| Spatial-Adaptive Fusion | 18.4391 | 0.5711 | 0.3678 | 49.93 |
-| DL-Dominant 90:10 | 21.8293 | 0.8286 | 0.1743 | 12.51 |
-| DL-Dominant 95:5 | 21.9894 | 0.8399 | 0.1671 | 12.57 |
-| DL-Dominant 80:20 | 21.4234 | 0.7932 | 0.1983 | 13.04 |
-| Standalone RetinexFormer | **22.1058** | **0.8451** | **0.1645** | ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â |
+| Classical CV | 16.9612 | 0.4878 | 0.4394 | 8.2752 |
+| Pretrained RetinexFormer | 22.1058 | 0.8451 | 0.1645 | 4.0858 |
+| Weighted 50:50 | 19.8884 | 0.6646 | 0.2922 | 6.2229 |
+| Adaptive fusion | 18.8833 | 0.5983 | 0.3457 | 7.0038 |
+| Spatial-adaptive fusion | 18.4391 | 0.5711 | 0.3678 | 7.3426 |
+| DL-dominant 90:10 | 21.8293 | 0.8286 | 0.1743 | 4.0949 |
+| DL-dominant 95:5 | 21.9894 | 0.8399 | 0.1671 | 4.0430 |
+| DL-dominant 80:20 | 21.4234 | 0.7932 | 0.1983 | 4.5403 |
 
-No fusion candidate satisfied the complete predefined selection rule.
+### 3.2 One-shot held-out eval15
 
-**Final selection:** Pretrained RetinexFormer.
+After freezing the validation decision, 15 paired eval15 images were evaluated, producing 45 method rows without recorded inference or metric failures.
 
-## 3.3 Ablation Study
+| Method | PSNR | SSIM | LPIPS | NIQE | CIEDE2000 |
+|---|---:|---:|---:|---:|---:|
+| Classical CV | 16.3686 | 0.5048 | 0.3590 | 7.9804 | 16.2439 |
+| Pretrained RetinexFormer | 21.7720 | 0.8224 | 0.1524 | 3.8765 | 8.9765 |
+| Hybrid Intelligence (spatial-adaptive) | 18.1390 | 0.5885 | 0.2943 | 7.0345 | 13.7454 |
 
-The validation compared fixed 50:50 weighted fusion, global adaptive fusion, spatial-adaptive fusion, and deep-learning-dominant 90:10, 95:5 and 80:20 fusion.
+Hybrid was lower than RetinexFormer by 3.6330 dB PSNR and 0.2339 SSIM, and higher by 0.1419 LPIPS, 3.1580 NIQE, and 4.7690 CIEDE2000. It improved PSNR on 3 of 15 images but did not improve mean quality metrics.
 
-Increasing the deep-learning contribution improved performance relative to more balanced fusion configurations. However, none of the tested fusion strategies established reliable improvement over standalone RetinexFormer under the predefined statistical selection rule. Fusion is therefore retained as an experimental capability rather than selected as the production restoration method.
+NIQE is a no-reference statistic and is not a ground-truth fidelity metric. Latency is not image quality. Other separately reported experiments (69-image architecture comparison, Model A/B validation, and 100-image official test) must remain separate from these M3 results.
 
-## 3.4 Evaluation Artifacts
+## 4. Ablation Study
 
-Evaluation outputs are stored under `evaluation/results/`.
+The M3 validation compared fixed 50:50 weighted fusion, global adaptive fusion, spatial-adaptive fusion, and RetinexFormer-dominant 90:10, 95:5, and 80:20 blends. No candidate met the predeclared paired-bootstrap selection rule. The results therefore do not justify selecting fusion over standalone RetinexFormer.
 
-- `lolv2_our485_validation_seed2026.json`
-- `lolv2_our485_fusion_validation_seed2026_verified.csv`
-- `lolv2_our485_fusion_validation_seed2026_verified_summary.csv`
-- `lolv2_our485_fusion_validation_seed2026_verified_decision.json`
-- `lolv2_eval15_m3_final_seed2026.csv`
-- `lolv2_eval15_m3_final_seed2026.csv.errors.txt`
+## 5. Failure Modes and Limitations
 
-The final held-out error log reports: `No evaluation failures.`
+- Spatial Hybrid underperformed standalone RetinexFormer on the reported validation and eval15 means.
+- Heuristic fusion maps represent blend proportions, not learned attention or pixel-level correctness.
+- Classical CV depends on the M1 package and OpenCV contrib.
+- CPU inference latency is hardware-dependent; local timing does not establish hosted performance.
+- The checkpoint and datasets are separately provisioned and are not included in Git.
+- Dataset-specific results do not guarantee performance on all unseen scenes or sensors.
+- Specific image-level failure examples must be selected from actual saved outputs and attached before final submission.
 
----
+## 6. Deployment and Quickstart
 
-# 4. Failure Modes and Limitations
+Initialize the submodule:
 
-1. **Hybrid quality limitation:** The tested hybrid fusion method performed worse than standalone RetinexFormer on the held-out evaluation.
-2. **Heuristic fusion:** The spatial contribution map is based on luminance heuristics and does not directly estimate restoration quality.
-3. **Inference latency:** The deep-learning API has substantially higher inference latency than the classical branch in the reported CPU evaluation.
-4. **Hardware dependency:** Deep-learning inference performance depends on available compute hardware.
-5. **No-reference metric limitation:** NIQE is descriptive and should not be interpreted as a substitute for paired-reference restoration metrics.
-6. **Generalization:** Broader testing across additional cameras, sensors and illumination conditions remains necessary.
-
-The final production recommendation is standalone RetinexFormer based on the measured validation and held-out results.
-
----
-
-# 5. Deployment and Quickstart
-
-## 5.1 Project Repository
-
-https://github.com/Vaishnavi-Dhanuka/CV-Hackathon-Project
-
-## 5.2 Local Setup
-
-Clone the repository with its submodules:
-
-```bash
-git clone --recurse-submodules https://github.com/Vaishnavi-Dhanuka/CV-Hackathon-Project.git
-cd CV-Hackathon-Project
+```powershell
+git submodule update --init --recursive
 ```
 
-Create and activate a Python virtual environment, install the dependencies specified in the project setup guide, and ensure the required RetinexFormer checkpoint is available.
+Provision and verify the separately distributed official checkpoint as described in `SETUP.md`.
 
-## 5.3 Start the Deep-Learning API
+Start the API:
 
-```bash
-uvicorn deep_learning.api:app --host 127.0.0.1 --port 8000
+```powershell
+python -m uvicorn deep_learning.api:app --host 127.0.0.1 --port 8000
 ```
 
-## 5.4 Start the Streamlit Application
+Start the frontend in another terminal:
 
-In another terminal:
-
-```bash
-streamlit run app/main.py
+```powershell
+python -m streamlit run app/main.py
 ```
 
-The Streamlit application communicates with the API using the configured `LUMINA_DL_API_URL` environment variable. Its default local API URL is `http://127.0.0.1:8000`.
+The supplied public URL is the Streamlit frontend only. The Render Free backend exceeded its 512 MB memory limit during inference, so successful hosted model inference is not established. Do not represent the frontend URL as proof that the full application is operational.
 
-## 5.5 Live Deployment
+## 7. Validation and Reproducibility
 
-**Public application URL:** https://lumina-streamlit.onrender.com
+The recorded local test run completed with 129 passed tests, 23 warnings, and 7 subtests, along with AppTest, API, validation, and eval15 checks. These results must be rerun on the final release candidate. Use the fixed split manifest and commands documented in `EVALUATION.md`; do not tune on eval15. The frontend demo URL does not verify hosted backend inference, because the Render Free backend exceeded its 512 MB memory limit during inference.
 
-Confirm the deployment status and public URL before final submission.
+## 8. Team Contributions
 
----
+Individual member responsibilities are not itemized here because verified per-member contribution details were not available in the reviewed source material.
 
-# 6. Conclusion
+## 9. Final Student Checklist
 
-LUMINA implements a modular low-light restoration application combining classical computer vision, pretrained deep learning and hybrid fusion.
+- [ ] Verified public live URL included.
+- [ ] Complete source code and pinned submodule present.
+- [ ] Architecture diagram matches final code.
+- [ ] Design document reviewed.
+- [ ] Comparative evaluation and ablation included.
+- [ ] Actual image-level failure examples attached.
+- [ ] Setup reproduced from a clean environment.
+- [ ] All four members can explain their contributions and the evaluation.
 
-The team evaluated the three approaches using paired-reference and no-reference quality metrics, latency measurements and a predefined validation-based selection procedure.
-
-Although the hybrid pipeline demonstrates an adaptive mechanism for combining enhancement outputs, the measured experiments did not establish a reliable improvement over standalone RetinexFormer.
-
-Accordingly, pretrained RetinexFormer is selected as the recommended production method, while the hybrid pipeline remains available for further experimentation.
-
-The project provides a working application architecture, a separate inference API, comparative evaluation artifacts and documented limitations to support further development.

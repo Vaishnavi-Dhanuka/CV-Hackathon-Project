@@ -1,4 +1,4 @@
-# M3 Evaluation Report
+﻿# M3 Evaluation Report
 
 ## Scope and protocol
 
@@ -12,7 +12,7 @@ not a measure of ground-truth fidelity. Latency is not restoration quality.
 
 The fixed split manifest is
 [`evaluation/results/lolv2_our485_validation_seed2026.json`](./evaluation/results/lolv2_our485_validation_seed2026.json):
-388 training names and 97 paired validation images from LOLv2 `our485`.
+388 training names and 97 paired validation images from original LOL (LOL-v1) `our485`.
 Validation compared Classical CV, the official RetinexFormer API, the existing
 weighted/adaptive/spatial fusion implementations, and fixed RetinexFormer-
 dominant blends. Each branch was inferred once per image and its output reused
@@ -22,7 +22,7 @@ for all fusion candidates.
 
 Means over 97 paired validation images:
 
-| Method | PSNR ↑ | SSIM ↑ | LPIPS ↓ | NIQE ↓ | CIEDE2000 ↓ | Fusion ms |
+| Method | PSNR â†‘ | SSIM â†‘ | LPIPS â†“ | NIQE â†“ | CIEDE2000 â†“ | Fusion ms |
 |---|---:|---:|---:|---:|---:|---:|
 | Classical CV | 16.9612 | 0.4878 | 0.4394 | 8.2752 | 15.8826 | N/A |
 | Pretrained Retinexformer | 22.1058 | 0.8451 | 0.1645 | 4.0858 | 8.4047 | N/A |
@@ -51,7 +51,7 @@ After freezing the validation decision, the runner evaluated all 15 paired
 eval15 images, producing 45 method rows. There were no inference or metric
 failures.
 
-| Method | PSNR ↑ | SSIM ↑ | LPIPS ↓ | NIQE ↓ | CIEDE2000 ↓ | Inference ms | Fusion ms |
+| Method | PSNR â†‘ | SSIM â†‘ | LPIPS â†“ | NIQE â†“ | CIEDE2000 â†“ | Inference ms | Fusion ms |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Classical CV | 16.3686 | 0.5048 | 0.3590 | 7.9804 | 16.2439 | 88.37 | N/A |
 | Pretrained Retinexformer | 21.7720 | 0.8224 | 0.1524 | 3.8765 | 8.9765 | 1960.97 | N/A |
@@ -83,3 +83,4 @@ From the repository root, start the API and run the fixed validation and
 one-shot finalizer using the commands in [the evaluation README](./evaluation/README.md).
 The finalizer refuses existing output paths; choose unique paths for any new
 run.
+

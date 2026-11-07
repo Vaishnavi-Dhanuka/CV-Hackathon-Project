@@ -1,4 +1,4 @@
-# M3 Integration and Evaluation Completion
+﻿# M3 Integration and Evaluation Completion
 
 ## Outcome
 
@@ -89,13 +89,13 @@ to perform validation or change fusion behavior in this completion.
 
 ## Evaluation decision
 
-The fixed seed-2026 80/20 split used 97 validation pairs from LOLv2 `our485`.
+The fixed seed-2026 80/20 split used 97 validation pairs from original LOL (LOL-v1) `our485`.
 No fusion candidate passed the predeclared paired-bootstrap criteria, so the
 recommended production result is RetinexFormer alone. After that decision was
 fixed, the one-shot eval15 run processed all 15 pairs (45 method rows) without
 failures. Its measured averages were:
 
-| Method | PSNR ↑ | SSIM ↑ | LPIPS ↓ | NIQE ↓ | Inference ms | Fusion ms |
+| Method | PSNR â†‘ | SSIM â†‘ | LPIPS â†“ | NIQE â†“ | Inference ms | Fusion ms |
 |---|---:|---:|---:|---:|---:|---:|
 | Classical CV | 16.3686 | 0.5048 | 0.3590 | 7.9804 | 88.37 | N/A |
 | Pretrained Retinexformer | 21.7720 | 0.8224 | 0.1524 | 3.8765 | 1960.97 | N/A |
@@ -111,14 +111,14 @@ artifact paths. The pre-existing official eval15 CSV remains unchanged.
 
 ## Validation performed
 
-- `python -m pytest evaluation/tests hybrid/tests app/tests -v` — **129 passed,
+- `python -m pytest evaluation/tests hybrid/tests app/tests -v` â€” **129 passed,
   13 warnings, 7 subtests passed**.
-- `git diff --check` — passed.
-- Streamlit AppTest smoke test — rendered the four pipeline modes without
+- `git diff --check` â€” passed.
+- Streamlit AppTest smoke test â€” rendered the four pipeline modes without
   exceptions.
-- API smoke test — HTTP 200, PNG/RGB, original dimensions.
-- Seeded our485 validation — 97/97 images completed; no failures.
-- One-shot eval15 finalizer — 15/15 images and 45/45 method rows completed;
+- API smoke test â€” HTTP 200, PNG/RGB, original dimensions.
+- Seeded our485 validation â€” 97/97 images completed; no failures.
+- One-shot eval15 finalizer â€” 15/15 images and 45/45 method rows completed;
   no failures.
 
 The warnings are dependency deprecations (Matplotlib/PyParsing and
@@ -151,3 +151,4 @@ environment also reports unrelated `pip check` conflicts involving
 - Reproducing model inference requires the separately supplied official
   checkpoint and initialized RetinexFormer submodule. The setup steps are in
   [LUMINA_SETUP_GUIDE.md](./LUMINA_SETUP_GUIDE.md).
+
