@@ -1,0 +1,81 @@
+{
+  "validation_seed": 2026,
+  "validation_images": 97,
+  "selection_rule": "Require positive paired-bootstrap 95% CI lower bounds for PSNR, SSIM, and -LPIPS, plus mean NIQE and mean CIEDE2000 no worse than RetinexFormer. NIQE is descriptive, not a reference-fidelity measure.",
+  "selected_strategy": "Pretrained Retinexformer",
+  "recommended_production_method": "RetinexFormer",
+  "fusion_candidates": [
+    {
+      "method": "Weighted 50:50",
+      "paired_bootstrap_lower_95_ci": {
+        "psnr": null,
+        "ssim": null,
+        "lpips": null
+      },
+      "mean_niqe_delta_vs_retinexformer": null,
+      "mean_delta_e2000_delta_vs_retinexformer": null,
+      "reliably_improves": false,
+      "mean_fusion_latency_ms": null
+    },
+    {
+      "method": "Adaptive fusion",
+      "paired_bootstrap_lower_95_ci": {
+        "psnr": null,
+        "ssim": null,
+        "lpips": null
+      },
+      "mean_niqe_delta_vs_retinexformer": null,
+      "mean_delta_e2000_delta_vs_retinexformer": null,
+      "reliably_improves": false,
+      "mean_fusion_latency_ms": null
+    },
+    {
+      "method": "Spatial-adaptive fusion",
+      "paired_bootstrap_lower_95_ci": {
+        "psnr": null,
+        "ssim": null,
+        "lpips": null
+      },
+      "mean_niqe_delta_vs_retinexformer": null,
+      "mean_delta_e2000_delta_vs_retinexformer": null,
+      "reliably_improves": false,
+      "mean_fusion_latency_ms": null
+    },
+    {
+      "method": "DL-dominant 90:10",
+      "paired_bootstrap_lower_95_ci": {
+        "psnr": null,
+        "ssim": null,
+        "lpips": null
+      },
+      "mean_niqe_delta_vs_retinexformer": null,
+      "mean_delta_e2000_delta_vs_retinexformer": null,
+      "reliably_improves": false,
+      "mean_fusion_latency_ms": null
+    },
+    {
+      "method": "DL-dominant 95:5",
+      "paired_bootstrap_lower_95_ci": {
+        "psnr": null,
+        "ssim": null,
+        "lpips": null
+      },
+      "mean_niqe_delta_vs_retinexformer": null,
+      "mean_delta_e2000_delta_vs_retinexformer": null,
+      "reliably_improves": false,
+      "mean_fusion_latency_ms": null
+    },
+    {
+      "method": "DL-dominant 80:20",
+      "paired_bootstrap_lower_95_ci": {
+        "psnr": null,
+        "ssim": null,
+        "lpips": null
+      },
+      "mean_niqe_delta_vs_retinexformer": null,
+      "mean_delta_e2000_delta_vs_retinexformer": null,
+      "reliably_improves": false,
+      "mean_fusion_latency_ms": null
+    }
+  ]
+}

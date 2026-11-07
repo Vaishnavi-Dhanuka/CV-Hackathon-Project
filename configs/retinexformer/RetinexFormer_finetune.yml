@@ -1,0 +1,100 @@
+
+name: RetinexFormer_LOLv2_finetune
+model_type: ImageCleanModel
+scale: 1
+num_gpu: 1
+manual_seed: 100
+
+datasets:
+  train:
+    name: LOLv2Train
+    type: Dataset_PairedImage
+    dataroot_gt: data/finetune/Train/Normal
+    dataroot_lq: data/finetune/Train/Low
+    geometric_augs: true
+    filename_tmpl: '{}'
+    io_backend:
+      type: disk
+    use_shuffle: true
+    num_worker_per_gpu: 0
+    batch_size_per_gpu: 1
+
+    mini_batch_sizes: [1]
+    iters: [5000]
+    gt_size: 256
+    gt_sizes: [256]
+
+    dataset_enlarge_ratio: 1
+    prefetch_mode: ~
+
+  val:
+    name: LOLv2Val
+    type: Dataset_PairedImage
+    dataroot_gt: data/finetune/Test/Normal
+    dataroot_lq: data/finetune/Test/Low
+    io_backend:
+      type: disk
+
+network_g:
+  type: RetinexFormer
+  in_channels: 3
+  out_channels: 3
+  n_feat: 40
+  stage: 1
+  num_blocks: [1, 2, 2]
+
+path:
+  pretrain_network_g: results/checkpoints/retinexformer_baseline.pth
+  strict_load_g: true
+  resume_state: ~
+
+train:
+  total_iter: 5000
+  warmup_iter: 100
+  use_grad_clip: true
+
+  scheduler:
+    type: CosineAnnealingRestartCyclicLR
+    periods: [5000]
+    restart_weights: [1]
+    eta_mins: [0.000001]
+
+  mixing_augs:
+    mixup: false
+    mixup_beta: 1.2
+    use_identity: true
+
+  optim_g:
+    type: Adam
+    lr: !!float 1e-5
+    betas: [0.9, 0.999]
+
+  pixel_opt:
+    type: L1Loss
+    loss_weight: 1
+    reduction: mean
+
+val:
+  window_size: 4
+  val_freq: 1000
+  save_img: false
+  rgb2bgr: false
+  use_image: false
+  max_minibatch: 1
+  metrics:
+    psnr:
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+
+logger:
+  print_freq: 100
+  save_checkpoint_freq: 1000
+  use_tb_logger: true
+  wandb:
+    project: low_light_finetune
+    resume_id: ~
+
+dist_params:
+  backend: nccl
+  port: 29500

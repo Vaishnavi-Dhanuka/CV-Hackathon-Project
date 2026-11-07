@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Model weights and checkpoints
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.h5
+*.keras
+checkpoints/
+
+# Datasets and generated outputs
+datasets/
+data/
+outputs/
+results/classical_outputs_*/
+results/*.zip
+tb_logger/
+
+# Temporary files
+*.log
+*.tmp
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local research datasets and comparison repositories
+third_party/ExDark/
+third_party/Zero-DCE-PlusPlus/
+third_party/multinex/

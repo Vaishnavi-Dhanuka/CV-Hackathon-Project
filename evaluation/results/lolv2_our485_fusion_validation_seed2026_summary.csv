@@ -1,0 +1,9 @@
+method,samples,psnr_mean,psnr_median,psnr_valid_samples,ssim_mean,ssim_median,ssim_valid_samples,lpips_mean,lpips_median,lpips_valid_samples,niqe_mean,niqe_median,niqe_valid_samples,latency_ms_mean,latency_ms_median,latency_ms_valid_samples,fusion_latency_ms_mean,fusion_latency_ms_median,fusion_latency_ms_valid_samples,mean_delta_e2000,color_fidelity_valid_samples
+Classical CV,97,,,0,,,0,,,0,,,0,,,0,,,0,,0
+Pretrained Retinexformer,97,22.105773122843136,22.7203572198608,97,0.8450895829756665,0.8544119769335831,97,0.1645149679220829,0.1610799878835678,97,,,0,2115.5745381443717,2078.5214000006818,97,,,0,8.404651764741878,97
+Weighted 50:50,97,,,0,,,0,,,0,,,0,,,0,,,0,,0
+Adaptive fusion,97,,,0,,,0,,,0,,,0,,,0,,,0,,0
+Spatial-adaptive fusion,97,,,0,,,0,,,0,,,0,,,0,,,0,,0
+DL-dominant 90:10,97,,,0,,,0,,,0,,,0,,,0,,,0,,0
+DL-dominant 95:5,97,,,0,,,0,,,0,,,0,,,0,,,0,,0
+DL-dominant 80:20,97,,,0,,,0,,,0,,,0,,,0,,,0,,0
