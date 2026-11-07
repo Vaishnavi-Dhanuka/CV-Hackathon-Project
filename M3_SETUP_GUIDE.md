@@ -6,10 +6,10 @@ separately and is intentionally not stored in Git.
 
 ## Windows PowerShell setup
 
-Run from the repository root on Python 3.10:
+Run from the repository root on Python 3.11:
 
 ```powershell
-py -3.10 -m venv .venv
+py -3.11 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 python -m pip install torch==2.2.2 torchvision==0.17.2 `

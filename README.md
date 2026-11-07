@@ -1,4 +1,4 @@
-﻿# Robust Low-Light Image Restoration and Enhancement
+# Robust Low-Light Image Restoration and Enhancement
 
 A deep-learning-based low-light image enhancement system built around **Retinexformer**, with classical image-processing comparisons and fine-tuned model variants.
 
@@ -204,4 +204,4 @@ Evaluation CSVs and generated images are retained locally and are not all commit
 
 ## 10. Team
 
-Collaborative project developed by a team of three members for the computer vision hackathon.
+Collaborative project developed by a team of four members for the computer vision hackathon.

@@ -46,10 +46,11 @@ The Blueprint configures these commands and settings:
 | Backend | `git submodule update --init --recursive && python -m pip install -r requirements-render.txt` | `python scripts/fetch_render_checkpoint.py && uvicorn deep_learning.api:app --host 0.0.0.0 --port $PORT` | `/health` |
 | Frontend | `python -m pip install -r requirements-render-frontend.txt` | `python -m streamlit run app/main.py --server.address 0.0.0.0 --server.port $PORT --server.headless true --server.maxUploadSize 10` | `/` |
 
-Both services request Render's `standard` plan in `render.yaml`. The local
-checkpoint-backed CPU smoke test reached 522.9 MiB RSS, so do not use a
-512-MiB service for the backend. Verify the selected plan's current memory
-allocation and upgrade if needed; a 2-GiB-or-larger backend is recommended.
+Both services currently request Render's `free` plan in `render.yaml`. The local
+checkpoint-backed CPU smoke test reached 522.9 MiB RSS, so the backend may
+exceed the available memory on a Free instance. Verify the current memory
+allocation and confirm the required plan with the deployment owner before
+relying on the hosted service. A 2-GiB-or-larger backend is recommended.
 The frontend is a separate process and does not load the PyTorch model.
 
 ## Environment variables
